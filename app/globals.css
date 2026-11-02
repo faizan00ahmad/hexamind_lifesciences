@@ -400,7 +400,9 @@ footer{background:var(--primary-d);color:#fff;padding:80px 40px 30px;}
 .n-logo{cursor:pointer;}
 @media(max-width:1024px){.n-mobile{display:block;}}
 #about-anchor,#facility-anchor,#global-anchor,#quality-anchor{scroll-margin-top:116px;}
-.h-slider{min-height:300px;}
+.h-slider{display:grid;min-height:0;overflow:visible;}
+.h-slide{position:relative;inset:auto;grid-area:1/1;pointer-events:none;}
+.h-slide.on{pointer-events:auto;}
 .certs-row{grid-template-columns:repeat(4,1fr);}
 .journey-sec{padding:100px 40px;background:#fff;}
 .journey-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}

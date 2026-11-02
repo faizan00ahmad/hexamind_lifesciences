@@ -66,7 +66,7 @@ export default function HeroSlider() {
           <div className="h-badge"><span className="h-badge-dot"></span>GMP Certified · ISO 9001 · 14001 · 45001</div>
           <div className="h-slider">
             {SLIDES.map((s, i) => (
-              <div key={i} className={`h-slide${si === i ? " on" : ""}`}>
+              <div key={i} className={`h-slide${si === i ? " on" : ""}`} aria-hidden={si !== i}>
                 <h1 className="h-headline">{s.head}</h1>
                 <p className="h-sub" style={{ marginTop: 20 }}>{s.sub}</p>
               </div>
