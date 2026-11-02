@@ -1,0 +1,30 @@
+{
+  "category": "large",
+  "source": "Schiwo Pakistan Livestock price list, effective 01-01-2026 (Updated-2.pdf, page 2)",
+  "currency": "Rs",
+  "rows": [
+    ["Lactovil","1 Kg",880],["Lactovil","5 Kg",3800],["Lactovil","25 Kg",18000],
+    ["Calphomin","1 Ltr",3200],
+    ["Nutrisan","100 gm",412],["Nutrisan","500 gm",1950],
+    ["Sablon","100 gm",300],["Sablon","500 gm",1500],
+    ["Tibrex","1 Ltr",2450],
+    ["Opolo","100 gm",700],
+    ["Zinax","100 ml",1250],["Zinax","1 Ltr",11250],
+    ["Revopril","1 Ltr",2340],
+    ["Neurantic","1 Kg",3400],
+    ["Charvin","1 Ltr",3500],
+    ["Roxin","100 ml",545],
+    ["HM Calco Care","120 ml",390],
+    ["Saniplex","25 Kg",17750],
+    ["Bionyme","1 Ltr",2215],
+    ["Clotex","240 ml",545],
+    ["Breed Route","300 gm",1080],
+    ["Cinnavet","100 ml",425],
+    ["Folinex","1 Kg",2380],
+    ["Lactozen","1 Kg",2410],
+    ["Nutrilon","1 Kg",2360],
+    ["Parturon","300 gm",915],
+    ["Spicora","300 gm",630],
+    ["Hindox","100 gm",415]
+  ]
+}

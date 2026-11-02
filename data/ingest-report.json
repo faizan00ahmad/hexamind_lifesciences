@@ -1,0 +1,69 @@
+{
+ "poultry": {
+  "fuzzy": [
+   "[poultry] \"Lushbom\" (1.png) → price list \"Lushbon\" (0.86)",
+   "[poultry] \"Lushbom\" (2.png) → price list \"Lushbon\" (0.86)",
+   "[poultry] \"Phytongain\" (1 l.png) → price list \"Phytogain\" (0.90)",
+   "[poultry] \"Phytongain\" (5l l.png) → price list \"Phytogain\" (0.90)",
+   "[poultry] \"Choli Forte\" (choli forte 25kg.png) → price list \"Choli Fort\" (0.90)",
+   "[poultry] \"Choli Forte\" (choli forte 5KG.png) → price list \"Choli Fort\" (0.90)",
+   "[poultry] \"Vital Glow\" (vital glow 1kg.png) → price list \"Vita Glow\" (0.89)"
+  ],
+  "priceOnly": [
+   "[poultry] Cytozyme",
+   "[poultry] Prolivit",
+   "[poultry] Narmix"
+  ],
+  "noPrice": [],
+  "sizeNoPrice": [
+   "[poultry] Allium Plus: picture for 5 Ltr but no price",
+   "[poultry] Kimshield: picture for 5 Ltr but no price",
+   "[poultry] Metalax: picture for 12 Kg but no price",
+   "[poultry] Nutricrypt: picture for 12 Kg but no price",
+   "[poultry] Sablon: picture for 12 Kg but no price"
+  ],
+  "sizeNoPicture": [
+   "[poultry] Allium Plus: price for 10 Ltr but no picture of that size",
+   "[poultry] Hyflex: price for 5 Kg but no picture of that size",
+   "[poultry] Kimchizyme: price for 5 Ltr but no picture of that size",
+   "[poultry] Metalax: price for 1 Kg but no picture of that size",
+   "[poultry] Nutricrypt: price for 1 Kg but no picture of that size",
+   "[poultry] Rexido: price for 5 Kg but no picture of that size",
+   "[poultry] Roxin: price for 5 Ltr but no picture of that size",
+   "[poultry] Zorex: price for 10 Ltr but no picture of that size"
+  ],
+  "warnings": []
+ },
+ "human": {
+  "fuzzy": [
+   "[human] \"C-Bary\" (C-Bary.png) → price list \"C-Bary Sachet\" (1.00)",
+   "[human] \"Cinofulat 30 Tab\" (Cinofulat 30 tab.png) → price list \"Cinofulat Tablet\" (1.00)",
+   "[human] \"Folivac\" (Folivac.png) → price list \"Folivac Drops\" (1.00)",
+   "[human] \"Fouli Tab 2\" (fouli  tab 2.png) → price list \"Fouli-400 Tablet\" (1.00)",
+   "[human] \"Fouli Tab\" (fouli  tab.png) → price list \"Fouli-400 Tablet\" (1.00)",
+   "[human] \"Hex 20 Tab\" (hex 20 tab.png) → price list \"Hexagyn Tablet\" (1.00)",
+   "[human] \"Kolibet\" (Kolibet.png) → price list \"Kolibit Syrup\" (0.88)",
+   "[human] \"Megsapat 1000mg\" (megsapat 1000mg.png) → price list \"Megspat Tablet\" (0.89)",
+   "[human] \"Orgimeg\" (Orgimeg.png) → price list \"Orgimeg Sachet\" (1.00)",
+   "[human] \"Oxacup\" (Oxacup.png) → price list \"Oxacup Syrup\" (1.00)",
+   "[human] \"Pyrofer\" (Pyrofer.png) → price list \"Pyrofer Sachet\" (1.00)",
+   "[human] \"Senitin 30 Tab\" (senitin 30 tab.png) → price list \"Senitin Tablet\" (1.00)",
+   "[human] \"Vdax G\" (Vdax G.png) → price list \"Vdax-G Sachet\" (1.00)",
+   "[human] \"Vdax G\" (Vdax G.png) → price list \"Vdax-G Syrup\" (1.00)",
+   "[human] \"Velikare\" (Velikare.png) → price list \"Velikare Drops\" (1.00)"
+  ],
+  "priceOnly": [],
+  "noPrice": [],
+  "sizeNoPrice": [],
+  "sizeNoPicture": [],
+  "warnings": []
+ },
+ "large": {
+  "fuzzy": [],
+  "priceOnly": [],
+  "noPrice": [],
+  "sizeNoPrice": [],
+  "sizeNoPicture": [],
+  "warnings": []
+ }
+}

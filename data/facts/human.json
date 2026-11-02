@@ -1,0 +1,18 @@
+{
+  "_source": "Read from the printed product covers (Schiwo Pakistan Human Division renders) — only text visible on the packs.",
+  "Folivac Drops":   { "tagline": "Reclaim your vitality with iron support", "comp": ["Iron", "Vitamin C", "Vitamin B12", "Folic Acid"] },
+  "Kolibit Syrup":   { "tagline": "Neuro Booster", "comp": ["Choline", "Ginseng", "Ginkgo Biloba"], "chars": ["Supports brain metabolism", "Improves cognitive alertness", "Enhances memory and cognition"] },
+  "Optace Syrup":    { "tagline": "Eye health support", "comp": ["Lutein", "Zeaxanthin", "Vitamin A", "Vitamin C"], "chars": ["Enhances visual clarity", "Built-in blue light filter", "Fights digital eye strain", "Macular pigment optical density (MPOD) support"] },
+  "Oxacup Syrup":    { "tagline": "Zinc & copper for immune health", "comp": ["Zinc", "Copper"], "chars": ["Prevents zinc deficiency", "Boosts immunity", "Supports growth"] },
+  "Vdax-G Syrup":    { "tagline": "Wheat dextrin & green tea extract", "comp": ["Wheat Dextrin", "Green Tea Extract"], "chars": ["Regulates bowel & digestion", "Relieves constipation & acidity", "Reduces cholesterol"] },
+  "Velikare Drops":  { "tagline": "Vitamins A, D, E, K2 & Zinc — 300 oral drops", "comp": ["Vitamin A", "Vitamin D", "Vitamin E", "Vitamin K2", "Zinc"] },
+  "C-Bary Sachet":   { "tagline": "A natural remedy for healthy urinary tract", "comp": ["Cranberry Extract", "D-Mannose", "Ascorbic Acid"] },
+  "Orgimeg Sachet":  { "tagline": "Optimizes male fertility", "comp": ["L-Arginine", "Cyanocobalamin", "Omega-3", "Folic Acid", "Zinc", "Pyridoxine HCl"] },
+  "Pyrofer Sachet":  { "tagline": "For iron deficiency anemia", "comp": ["Iron Pyrophosphate", "Folic Acid", "Ascorbic Acid", "Cyanocobalamin", "Pyridoxine", "Manganese Sulfate", "Zinc Sulfate"], "chars": ["Helpful in formation of red blood cells & hemoglobin"] },
+  "Vdax-G Sachet":   { "tagline": "Wheat dextrin & green tea extract", "comp": ["Wheat Dextrin", "Green Tea Extract"], "chars": ["Regulates bowel & digestion", "Relieves constipation & acidity", "Reduces cholesterol"] },
+  "Hexagyn Tablet":  { "tagline": "A potent nerve tonic", "comp": ["Choline Bitartrate", "Ginseng Extract", "Ginkgo Biloba Extract"], "chars": ["Supports memory", "Supports cognitive function", "Supports circulatory health", "Supports restful sleep"] },
+  "Cinofulat Tablet":{ "tagline": "Nutritional supplement for Vitamin B deficiency", "chars": ["Management of peripheral neuropathy associated with diabetes mellitus", "Supports metabolic / cellular function"] },
+  "Senitin Tablet":  { "tagline": "Male fertility — reproductive health support", "chars": ["Increases sperm count and motility", "Supports reproductive health"] },
+  "Megspat Tablet":  { "tagline": "Magnesium Glycinate 1000 mg", "comp": ["Magnesium Glycinate 1000 mg"], "chars": ["Supports sleep, nerve, muscle, bone & heart health"] },
+  "Fouli-400 Tablet":{ "tagline": "Supports female fertility & reproductive health", "comp": ["L-Methyl Folate 400 mcg"], "chars": ["Maternal tissue growth during pregnancy", "Normal function of the immune system", "Normal blood formulation"] }
+}
