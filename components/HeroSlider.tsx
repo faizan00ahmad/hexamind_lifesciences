@@ -29,6 +29,16 @@ export default function HeroSlider() {
   const [si, setSi] = useState(0);
   const [bg, setBg] = useState(SLIDES[0].img);
   const [fade, setFade] = useState(1);
+  const [paused, setPaused] = useState(false);
+  const [reduced, setReduced] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(mq.matches);
+    const on = () => setReduced(mq.matches);
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, []);
 
   const go = (i: number) => {
     setSi(i);
@@ -40,15 +50,16 @@ export default function HeroSlider() {
   };
 
   useEffect(() => {
+    if (paused || reduced) return;
     const t = setInterval(() => go((si + 1) % SLIDES.length), 7000);
     return () => clearInterval(t);
-  }, [si]);
+  }, [si, paused, reduced]);
 
   return (
-    <section className="hero">
+    <section className="hero" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)}>
       <div className="hero-bg">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={bg} alt="Manufacturing" style={{ opacity: fade }} />
+        <img src={bg} alt="Manufacturing" style={{ opacity: fade }} fetchPriority="high" decoding="async" />
       </div>
       <div className="hero-inner">
         <div className="h-l">

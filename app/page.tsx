@@ -190,7 +190,7 @@ export default function Home() {
                 <circle cx="550" cy="200" r="6" fill="#C8102E" />
                 <circle cx="650" cy="170" r="6" fill="#C8102E" />
                 <circle cx="120" cy="220" r="6" fill="#C8102E" />
-                <text x="220" y="175" fontFamily="Inter,sans-serif" fontSize="11" fontWeight="700" fill="#003087">Pakistan (HQ)</text>
+                <text x="220" y="175" style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }} fontSize="11" fontWeight="700" fill="#003087">Pakistan (HQ)</text>
               </svg>
               <div className="country-grid">
                 {["Pakistan", "UAE", "Saudi Arabia", "Afghanistan", "Bangladesh", "Sri Lanka"].map((c) => (
