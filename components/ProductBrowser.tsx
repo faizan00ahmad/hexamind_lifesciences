@@ -24,7 +24,6 @@ export default function ProductBrowser({ cat, version }: { cat: CategoryId; vers
   const [products, setProducts] = useState<Product[] | null>(null);
   const [error, setError] = useState(false);
   const [group, setGroup] = useState("All");
-  const [company, setCompany] = useState("All");
   const [q, setQ] = useState("");
   const [page, setPage] = useState(1);
   const [open, setOpen] = useState<Product | null>(null);
@@ -66,12 +65,11 @@ export default function ProductBrowser({ cat, version }: { cat: CategoryId; vers
     const list = products.filter(
       (p) =>
         (group === "All" || p.group === group) &&
-        (company === "All" || p.company === company) &&
         (!needle || p.name.toLowerCase().includes(needle) || p.tagline.toLowerCase().includes(needle)),
     );
     // grouped by company (client order), alphabetical inside each company
     return companies.length ? [...list].sort((a, b) => rank(a) - rank(b) || a.name.localeCompare(b.name)) : list;
-  }, [products, group, company, q, companies]);
+  }, [products, group, q, companies]);
 
   // Pages: with company sections every page holds ONE company; its products are split evenly across its pages
   // (e.g. 38 -> 13 + 13 + 12; 22 -> 11 + 11) so no page is left with a stray one or two cards.
@@ -183,20 +181,17 @@ export default function ProductBrowser({ cat, version }: { cat: CategoryId; vers
         </div>
       </div>
 
-      {companies.length > 0 && (
-        <div className="co-tabs" role="tablist" aria-label="Filter by company">
-          <button className={`co-tab${company === "All" ? " on" : ""}`} onClick={() => { setCompany("All"); setPage(1); }}>All companies</button>
-          {companies.map((c) => (
-            <button key={c.key} className={`co-tab${company === c.key ? " on" : ""}`} onClick={() => { setCompany(c.key); setPage(1); }}>{c.label}</button>
-          ))}
-        </div>
-      )}
-
       {error && <div className="prod-grid"><div className="empty">Could not load products. Please refresh the page.</div></div>}
       {!products && !error && <div className="prod-grid">{Array.from({ length: 8 }, (_, i) => <div key={i} className="pi-skel" />)}</div>}
       {products && slice.length === 0 && <div className="prod-grid"><div className="empty">No products match your search.</div></div>}
       {sections.map((sec) => (
         <section key={sec.key} className="co-sec">
+          {sec.title && (
+            <div className="co-head">
+              <h3>{sec.title}</h3>
+              <span>{sec.total} products{sec.part ? ` · ${sec.part}` : ""}</span>
+            </div>
+          )}
           <div className="prod-grid">
             {sec.items.map((p, i) => (
               <button className="pi" key={p.id} onClick={() => setOpen(p)}>
