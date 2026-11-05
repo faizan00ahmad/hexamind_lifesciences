@@ -186,12 +186,6 @@ export default function ProductBrowser({ cat, version }: { cat: CategoryId; vers
       {products && slice.length === 0 && <div className="prod-grid"><div className="empty">No products match your search.</div></div>}
       {sections.map((sec) => (
         <section key={sec.key} className="co-sec">
-          {sec.title && (
-            <div className="co-head">
-              <h3>{sec.title}</h3>
-              <span>{sec.total} products{sec.part ? ` · ${sec.part}` : ""}</span>
-            </div>
-          )}
           <div className="prod-grid">
             {sec.items.map((p, i) => (
               <button className="pi" key={p.id} onClick={() => setOpen(p)}>
