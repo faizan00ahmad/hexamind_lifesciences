@@ -40,3 +40,11 @@ export const CERT_COMMON = {
     "Herbal Extraction Area",
   ],
 };
+
+// GMP logo supplied by the client (GMP LOGO.pdf) — shown as the first card, before the ISO certificates.
+export const GMP = {
+  title: "GMP Certified",
+  alt: "GMP – Good Manufacturing Practice certification",
+  description: "Good Manufacturing Practices certification for human and veterinary alternative medicines",
+  year: "2025",
+};

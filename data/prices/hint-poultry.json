@@ -1,31 +1,203 @@
 {
-  "category": "poultry",
-  "source": "HINT Life Sciences price list, effective 07-07-2026 (Updated-2.pdf, page 3)",
-  "currency": "Rs",
-  "rows": [
-    ["Pershing","1 Ltr",4690],["Pershing","5 Ltr",22280],["Pershing","10 Ltr",42220],
-    ["Digeplex","1 Ltr",10140],["Digeplex","5 Ltr",48167],["Digeplex","10 Ltr",91264],
-    ["Sablon","1 Kg",2408],
-    ["Endrex","1 Ltr",6223],
-    ["Floragen","25 Kg",29505],
-    ["Organo","1 Ltr",1440],["Organo","25 Ltr",30830],
-    ["Dicorex","1 Kg",4596],["Dicorex","5 Kg",21875],
-    ["Robolox","1 Ltr",5656],
-    ["Libio","1 Ltr",5400],["Libio","5 Ltr",25645],
-    ["Jolvit","1 Ltr",4850],
-    ["Respomen","1 Ltr",6944],["Respomen","5 Ltr",32985],
-    ["Nutricrypt","1 Kg",2829],
-    ["Atonik","1 Kg",2240],
-    ["Cerox","1 Kg",8430],
-    ["Vital Boost","1 Kg",3131],
-    ["Essence Aura","1 Ltr",4889],["Essence Aura","5 Ltr",23222],
-    ["Aromi Pure","1 Ltr",4637],["Aromi Pure","5 Ltr",22025],
-    ["Kimchizyme","1 Ltr",6703],["Kimchizyme","5 Ltr",32679],
-    ["Herbatox","1 Ltr",3580],["Herbatox","5 Ltr",17005],
-    ["Aglofin-10","25 Kg",30442],
-    ["Celaxis","1 Ltr",3226],["Celaxis","5 Ltr",15095],
-    ["Mirakle","1 Ltr",4864],["Mirakle","5 Ltr",23103],["Mirakle","10 Ltr",43772],
-    ["Ginsan","1 Ltr",2742],
-    ["Nvigo","1 Ltr",6950]
+ "category": "poultry",
+ "source": "HINT Life Sciences price list, effective 07-07-2026 (Updated-2.pdf, page 3)",
+ "currency": "Rs",
+ "rows": [
+  [
+   "Pershing",
+   "1 Ltr",
+   4690
+  ],
+  [
+   "Pershing",
+   "5 Ltr",
+   22280
+  ],
+  [
+   "Pershing",
+   "10 Ltr",
+   42220
+  ],
+  [
+   "Digeplex",
+   "1 Ltr",
+   10140
+  ],
+  [
+   "Digeplex",
+   "5 Ltr",
+   48167
+  ],
+  [
+   "Digeplex",
+   "10 Ltr",
+   91264
+  ],
+  [
+   "Sablon",
+   "1 Kg",
+   2408
+  ],
+  [
+   "Endrex",
+   "1 Ltr",
+   6223
+  ],
+  [
+   "Floragen",
+   "25 Kg",
+   29505
+  ],
+  [
+   "Organo",
+   "1 Ltr",
+   1440
+  ],
+  [
+   "Organo",
+   "25 Ltr",
+   30830
+  ],
+  [
+   "Dicorex",
+   "1 Kg",
+   4596
+  ],
+  [
+   "Dicorex",
+   "5 Kg",
+   21875
+  ],
+  [
+   "Robolox",
+   "1 Ltr",
+   5656
+  ],
+  [
+   "Libio",
+   "1 Ltr",
+   5400
+  ],
+  [
+   "Libio",
+   "5 Ltr",
+   25645
+  ],
+  [
+   "Jolvit",
+   "1 Ltr",
+   4850
+  ],
+  [
+   "Respomen",
+   "1 Ltr",
+   6944
+  ],
+  [
+   "Respomen",
+   "5 Ltr",
+   32985
+  ],
+  [
+   "Nutricrypt",
+   "1 Kg",
+   2829
+  ],
+  [
+   "Atonik",
+   "1 Kg",
+   2240
+  ],
+  [
+   "Cerox",
+   "1 Kg",
+   8430
+  ],
+  [
+   "Vital Boost",
+   "1 Kg",
+   3131
+  ],
+  [
+   "Essence Aura",
+   "1 Ltr",
+   4889
+  ],
+  [
+   "Essence Aura",
+   "5 Ltr",
+   23222
+  ],
+  [
+   "Aromi Pure",
+   "1 Ltr",
+   4637
+  ],
+  [
+   "Aromi Pure",
+   "5 Ltr",
+   22025
+  ],
+  [
+   "Kimchizyme",
+   "1 Ltr",
+   6703
+  ],
+  [
+   "Kimchizyme",
+   "5 Ltr",
+   32679
+  ],
+  [
+   "Herbatox",
+   "1 Ltr",
+   3580
+  ],
+  [
+   "Herbatox",
+   "5 Ltr",
+   17005
+  ],
+  [
+   "Aglofin-10",
+   "25 Kg",
+   30442
+  ],
+  [
+   "Celaxis",
+   "1 Ltr",
+   3226
+  ],
+  [
+   "Celaxis",
+   "5 Ltr",
+   15095
+  ],
+  [
+   "Mirakle",
+   "1 Ltr",
+   4864
+  ],
+  [
+   "Mirakle",
+   "5 Ltr",
+   23103
+  ],
+  [
+   "Mirakle",
+   "10 Ltr",
+   43772
+  ],
+  [
+   "Ginsan",
+   "1 Ltr",
+   2742
+  ],
+  [
+   "Nvigo",
+   "1 Ltr",
+   6950
   ]
+ ],
+ "company": "Hint Life Sciences"
 }

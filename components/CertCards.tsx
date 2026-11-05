@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CERT_COMMON as C, CERTS, type Cert } from "@/lib/certs";
+import { CERT_COMMON as C, CERTS, GMP, type Cert } from "@/lib/certs";
 import Reveal from "./Reveal";
 
 // Certificate pictures shown directly. Hover (or keyboard focus) pops the key details out of the picture;
@@ -22,17 +22,25 @@ export default function CertCards() {
 
   return (
     <>
-      <div className="gmp-strip">
-        <span className="cert-ico">GMP</span>
-        <div>
-          <b>GMP Certified</b>
-          <span>Good Manufacturing Practices certification for human and veterinary alternative medicines · 2025</span>
-        </div>
-      </div>
-
       <div className="cert-pics">
+        <Reveal className="cert-pic">
+          <div className="cert-pic-btn gmp" tabIndex={0} aria-label={`${GMP.title} — ${GMP.description}, ${GMP.year}`}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/certs/gmp-thumb.png" alt={GMP.alt} loading="lazy" />
+            <span className="cert-pop">
+              <b>{GMP.title}</b>
+              <em>Good Manufacturing Practices</em>
+              <span>{GMP.description}</span>
+              <span>Certified {GMP.year}</span>
+            </span>
+          </div>
+          <div className="cert-cap">
+            <b>GMP</b>
+            <span>Good Manufacturing Practices · {GMP.year}</span>
+          </div>
+        </Reveal>
         {CERTS.map((c, i) => (
-          <Reveal key={c.id} className="cert-pic" delay={(i % 4) as 0 | 1 | 2 | 3}>
+          <Reveal key={c.id} className="cert-pic" delay={((i + 1) % 4) as 0 | 1 | 2 | 3}>
             <button type="button" className="cert-pic-btn" onClick={() => setOpen(c)} aria-label={`${c.standard} certificate — view details`}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={`/certs/${c.id}-thumb.jpg`} alt={`${c.standard} Certificate of Registration`} loading="lazy" />

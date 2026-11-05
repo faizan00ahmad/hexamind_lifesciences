@@ -78,6 +78,7 @@ export interface Product {
   dosage: string;
   chars: string[];
   group?: string; // sub-filter (e.g. Vitamins, Antibiotics)
+  company?: string; // brand/company the product belongs to (poultry page is grouped by it)
   prices?: { size: string; amount: number }[]; // market price per pack size (PKR)
   image?: string; // thumbnail path under /products
   full?: string; // large image used in the modal
@@ -99,3 +100,10 @@ export function priceLabel(p: Product): string | null {
   const min = Math.min(...p.prices.map((x) => x.amount));
   return (p.prices.length > 1 ? "From " : "") + rs(min);
 }
+
+// Poultry page sections, in the order the client listed them.
+export const COMPANIES = [
+  { key: "Schiwo Pakistan", label: "Schiwo", full: "Schiwo Pakistan" },
+  { key: "Hint Life Sciences", label: "Hint Life", full: "Hint Life Sciences" },
+  { key: "USHNAZ Pharmaceuticals", label: "Ushnaz", full: "Ushnaz Pharmaceuticals" },
+];

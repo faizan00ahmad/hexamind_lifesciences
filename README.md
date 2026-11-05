@@ -39,4 +39,10 @@ Helper scripts: `ocr-prep.mjs` + `ocr.ps1` (Windows OCR of every pack), `classif
 `contact-sheet.mjs` (visual review sheets), `pick-fronts.mjs`.
 
 ## Certificates
-`public/certs/iso-9001|14001|45001.jpg` (+ `-thumb.jpg`) are shown on the home page; details in `lib/certs.ts`.
+`public/certs/gmp.png` (GMP logo, first card) and `iso-9001|14001|45001.jpg` (+ thumbs) are shown on the home page; details in `lib/certs.ts`.
+
+## Poultry page
+Grouped by company (Schiwo, Hint Life, Ushnaz — order set in `COMPANIES`, `lib/site.ts`). Each page holds one company; the company comes from the price-list file (`company` in `data/prices/*.json`).
+
+## Products menu
+Animal Health (Poultry / Livestock / Pet) · Human Health · Cosmetics — fly-out on desktop, nested accordions on mobile (`components/Header.tsx`).

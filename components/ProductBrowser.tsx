@@ -2,10 +2,11 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { loadCatalog } from "@/lib/catalogCache";
-import { CATEGORIES, WA, priceLabel, type CategoryId, type Product } from "@/lib/site";
+import { CATEGORIES, COMPANIES, WA, priceLabel, type CategoryId, type Product } from "@/lib/site";
 import ProductModal from "./ProductModal";
 
 const PAGE_SIZE = 12;
+const COMPANY_PAGE_MAX = 16; // company view: up to 4 full rows of 4 per page
 
 function pageList(cur: number, total: number): (number | "…")[] {
   if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
@@ -23,6 +24,7 @@ export default function ProductBrowser({ cat, version }: { cat: CategoryId; vers
   const [products, setProducts] = useState<Product[] | null>(null);
   const [error, setError] = useState(false);
   const [group, setGroup] = useState("All");
+  const [company, setCompany] = useState("All");
   const [q, setQ] = useState("");
   const [page, setPage] = useState(1);
   const [open, setOpen] = useState<Product | null>(null);
@@ -48,26 +50,74 @@ export default function ProductBrowser({ cat, version }: { cat: CategoryId; vers
     return ["All", ...Array.from(set).sort()];
   }, [products]);
 
+  // Companies present in this category (poultry: Schiwo, Hint Life, Ushnaz) — drives the company sections.
+  const companies = useMemo(() => {
+    const present = new Set(products?.map((p) => p.company).filter(Boolean));
+    return present.size > 1 ? COMPANIES.filter((c) => present.has(c.key)) : [];
+  }, [products]);
+  const rank = (p: Product) => {
+    const i = COMPANIES.findIndex((c) => c.key === p.company);
+    return i < 0 ? 99 : i;
+  };
+
   const filtered = useMemo(() => {
     if (!products) return [];
     const needle = q.trim().toLowerCase();
-    return products.filter(
+    const list = products.filter(
       (p) =>
         (group === "All" || p.group === group) &&
+        (company === "All" || p.company === company) &&
         (!needle || p.name.toLowerCase().includes(needle) || p.tagline.toLowerCase().includes(needle)),
     );
-  }, [products, group, q]);
+    // grouped by company (client order), alphabetical inside each company
+    return companies.length ? [...list].sort((a, b) => rank(a) - rank(b) || a.name.localeCompare(b.name)) : list;
+  }, [products, group, company, q, companies]);
 
-  const pages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  // Pages: with company sections every page holds ONE company; its products are split evenly across its pages
+  // (e.g. 38 -> 13 + 13 + 12; 22 -> 11 + 11) so no page is left with a stray one or two cards.
+  const pageGroups = useMemo(() => {
+    if (!companies.length) {
+      const out: Product[][] = [];
+      for (let i = 0; i < filtered.length; i += PAGE_SIZE) out.push(filtered.slice(i, i + PAGE_SIZE));
+      return out;
+    }
+    const out: Product[][] = [];
+    for (const c of COMPANIES) {
+      const list = filtered.filter((p) => p.company === c.key);
+      if (!list.length) continue;
+      const n = Math.ceil(list.length / COMPANY_PAGE_MAX);
+      const base = Math.floor(list.length / n);
+      const extra = list.length % n;
+      let at = 0;
+      for (let i = 0; i < n; i++) {
+        const size = base + (i < extra ? 1 : 0);
+        out.push(list.slice(at, at + size));
+        at += size;
+      }
+    }
+    return out;
+  }, [filtered, companies]);
+
+  const pages = Math.max(1, pageGroups.length);
   const cur = Math.min(page, pages);
-  const slice = filtered.slice((cur - 1) * PAGE_SIZE, cur * PAGE_SIZE);
+  const slice = pageGroups[cur - 1] ?? [];
+
+  const sections = useMemo(() => {
+    if (!slice.length) return [];
+    if (!companies.length) return [{ key: "all", title: "", total: 0, part: "", items: slice }];
+    const key = slice[0].company;
+    const c = COMPANIES.find((x) => x.key === key);
+    const mine = pageGroups.filter((pg) => pg[0]?.company === key);
+    const idx = mine.indexOf(slice);
+    return [{ key: key ?? "other", title: c?.full ?? "Other", total: mine.flat().length, part: mine.length > 1 ? `Page ${idx + 1} of ${mine.length}` : "", items: slice }];
+  }, [slice, pageGroups, companies]);
 
   // warm the browser cache with the next page's thumbnails
   useEffect(() => {
-    filtered.slice(cur * PAGE_SIZE, (cur + 1) * PAGE_SIZE).forEach((p) => {
+    (pageGroups[cur] ?? []).forEach((p) => {
       if (p.image) new Image().src = p.image;
     });
-  }, [filtered, cur]);
+  }, [pageGroups, cur]);
 
   const go = useCallback((n: number) => {
     setPage(n);
@@ -133,32 +183,51 @@ export default function ProductBrowser({ cat, version }: { cat: CategoryId; vers
         </div>
       </div>
 
-      <div className="prod-grid">
-        {error && <div className="empty">Could not load products. Please refresh the page.</div>}
-        {!products && !error && Array.from({ length: 8 }, (_, i) => <div key={i} className="pi-skel" />)}
-        {products && slice.length === 0 && <div className="empty">No products match your search.</div>}
-        {slice.map((p, i) => (
-          <button className="pi" key={p.id} onClick={() => setOpen(p)}>
-            <div className="pi-imgw">
-              {p.image ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img className="pi-img" src={p.image} alt={p.name} loading={i < 4 ? "eager" : "lazy"} decoding="async" />
-              ) : (
-                <div className="pi-img noimg" />
-              )}
+      {companies.length > 0 && (
+        <div className="co-tabs" role="tablist" aria-label="Filter by company">
+          <button className={`co-tab${company === "All" ? " on" : ""}`} onClick={() => { setCompany("All"); setPage(1); }}>All companies</button>
+          {companies.map((c) => (
+            <button key={c.key} className={`co-tab${company === c.key ? " on" : ""}`} onClick={() => { setCompany(c.key); setPage(1); }}>{c.label}</button>
+          ))}
+        </div>
+      )}
+
+      {error && <div className="prod-grid"><div className="empty">Could not load products. Please refresh the page.</div></div>}
+      {!products && !error && <div className="prod-grid">{Array.from({ length: 8 }, (_, i) => <div key={i} className="pi-skel" />)}</div>}
+      {products && slice.length === 0 && <div className="prod-grid"><div className="empty">No products match your search.</div></div>}
+      {sections.map((sec) => (
+        <section key={sec.key} className="co-sec">
+          {sec.title && (
+            <div className="co-head">
+              <h3>{sec.title}</h3>
+              <span>{sec.total} products{sec.part ? ` · ${sec.part}` : ""}</span>
             </div>
-            <div className="pi-ov"></div>
-            <div className="pi-b">
-              <div className="pi-n">{p.name}</div>
-              <div className="pi-t">{p.tagline}</div>
-              <div className="pi-meta">
-                <span className="pi-pack">{priceLabel(p) ?? p.packing[0]}</span>
-                <span className="pi-link">View →</span>
-              </div>
-            </div>
-          </button>
-        ))}
-      </div>
+          )}
+          <div className="prod-grid">
+            {sec.items.map((p, i) => (
+              <button className="pi" key={p.id} onClick={() => setOpen(p)}>
+                <div className="pi-imgw">
+                  {p.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img className="pi-img" src={p.image} alt={p.name} loading={i < 4 ? "eager" : "lazy"} decoding="async" />
+                  ) : (
+                    <div className="pi-img noimg" />
+                  )}
+                </div>
+                <div className="pi-ov"></div>
+                <div className="pi-b">
+                  <div className="pi-n">{p.name}</div>
+                  <div className="pi-t">{p.tagline}</div>
+                  <div className="pi-meta">
+                    <span className="pi-pack">{priceLabel(p) ?? p.packing[0]}</span>
+                    <span className="pi-link">View →</span>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+        </section>
+      ))}
 
       {pages > 1 && (
         <div className="pager" role="navigation" aria-label="Pagination">

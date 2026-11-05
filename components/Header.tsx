@@ -3,7 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { CATEGORIES, CATEGORY_IDS } from "@/lib/site";
+import { CATEGORY_IDS } from "@/lib/site";
+
+// Products menu: Animal Health (with three sub-categories), Human Health, Cosmetics.
+const ANIMAL: { href: string; label: string }[] = [
+  { href: "/poultry", label: "Poultry Products" },
+  { href: "/large", label: "Livestock Products" },
+  { href: "/pets", label: "Pet Products" },
+];
 
 export default function Header() {
   const pathname = usePathname();
@@ -16,7 +23,23 @@ export default function Header() {
     };
   }, [open]);
 
+  const [sub, setSub] = useState(false); // desktop: Animal Health fly-out
+  const [mProducts, setMProducts] = useState(false); // mobile accordions
+  const [mAnimal, setMAnimal] = useState(false);
+
+  // close every menu when the page changes
+  useEffect(() => {
+    setOpen(false);
+    setDd(false);
+    setSub(false);
+  }, [pathname]);
+
   const close = () => setOpen(false);
+  const closeDd = () => {
+    setDd(false);
+    setSub(false);
+  };
+  const isAnimal = ANIMAL.some((a) => pathname === a.href);
   const isProducts = pathname === "/products" || CATEGORY_IDS.some((c) => pathname === "/" + c);
   const [dd, setDd] = useState(false);
 
@@ -54,18 +77,33 @@ export default function Header() {
           <li
             className="n-dd"
             onMouseEnter={() => setDd(true)}
-            onMouseLeave={() => setDd(false)}
-            onKeyDown={(e) => e.key === "Escape" && setDd(false)}
+            onMouseLeave={closeDd}
+            onKeyDown={(e) => e.key === "Escape" && closeDd()}
           >
-            <Link href="/products" className={isProducts ? "active" : ""} aria-haspopup="true" aria-expanded={dd} onClick={() => setDd(false)}>
+            <Link href="/products" className={isProducts ? "active" : ""} aria-haspopup="true" aria-expanded={dd} onClick={closeDd}>
               Products <span className="n-caret">▾</span>
             </Link>
             <div className={`n-dd-menu${dd ? " on" : ""}`}>
-              {CATEGORY_IDS.map((c) => (
-                <Link key={c} href={"/" + c} onClick={() => setDd(false)} className={pathname === "/" + c ? "active" : ""}>
-                  {CATEGORIES[c].menu}
-                </Link>
-              ))}
+              <div className="n-sub-wrap" onMouseEnter={() => setSub(true)} onMouseLeave={() => setSub(false)}>
+                <button
+                  type="button"
+                  className={`n-sub-btn${isAnimal ? " active" : ""}`}
+                  aria-haspopup="true"
+                  aria-expanded={sub}
+                  onClick={() => setSub(!sub)}
+                >
+                  Animal Health <span className="n-caret">▸</span>
+                </button>
+                <div className={`n-sub${sub ? " on" : ""}`}>
+                  {ANIMAL.map((a) => (
+                    <Link key={a.href} href={a.href} onClick={closeDd} className={pathname === a.href ? "active" : ""}>
+                      {a.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              <Link href="/human" onClick={closeDd} className={pathname === "/human" ? "active" : ""}>Human Health</Link>
+              <Link href="/cosmetics" onClick={closeDd} className={pathname === "/cosmetics" ? "active" : ""}>Cosmetics</Link>
             </div>
           </li>
           <li><Link href="/#global-anchor">Exports</Link></li>
@@ -81,12 +119,21 @@ export default function Header() {
         <Link href="/" onClick={close}>Home</Link>
         <Link href="/#about-anchor" onClick={close}>About Us</Link>
         <Link href="/#facility-anchor" onClick={close}>Manufacturing</Link>
-        <Link href="/products" onClick={close}>All Products</Link>
-        {CATEGORY_IDS.map((c) => (
-          <Link key={c} href={"/" + c} onClick={close} style={{ paddingLeft: 18, fontSize: 15 }}>
-            {CATEGORIES[c].menu}
-          </Link>
-        ))}
+        <button type="button" className="n-acc" aria-expanded={mProducts} onClick={() => setMProducts(!mProducts)}>
+          Products <span className={`n-acc-ic${mProducts ? " on" : ""}`}>▾</span>
+        </button>
+        <div className={`n-acc-panel${mProducts ? " on" : ""}`}>
+          <button type="button" className="n-acc n-acc-2" aria-expanded={mAnimal} onClick={() => setMAnimal(!mAnimal)}>
+            Animal Health <span className={`n-acc-ic${mAnimal ? " on" : ""}`}>▾</span>
+          </button>
+          <div className={`n-acc-panel n-acc-3${mAnimal ? " on" : ""}`}>
+            {ANIMAL.map((a) => (
+              <Link key={a.href} href={a.href} onClick={close}>{a.label}</Link>
+            ))}
+          </div>
+          <Link href="/human" onClick={close} className="n-acc-link">Human Health</Link>
+          <Link href="/cosmetics" onClick={close} className="n-acc-link">Cosmetics</Link>
+        </div>
         <Link href="/contact" onClick={close}>Contact Us</Link>
       </div>
     </>

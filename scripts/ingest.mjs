@@ -54,7 +54,7 @@ function loadPrices(cat) {
     for (const r of d.rows) {
       const [name, packing, price] = Array.isArray(r) ? r : [r.name, r.packing, r.price];
       const k = alnum(name);
-      const e = byName.get(k) ?? { name, sizes: new Map(), sources: new Set() };
+      const e = byName.get(k) ?? { name, sizes: new Map(), sources: new Set(), company: d.company };
       e.sizes.set(packSize(packing), price);
       e.sources.add(d.source);
       byName.set(k, e);
@@ -213,6 +213,7 @@ async function buildCategory(cat, report) {
       comp: fx.comp ?? [],
       dosage: fx.dosage ?? "",
       chars: fx.chars ?? [],
+      company: priced?.company ?? g.images[0]?.brand,
       group: g.group ?? formGroup(g.name, sizes),
       prices: priced ? sizes.filter((s) => priced.sizes.has(s)).map((s) => ({ size: label(s), amount: priced.sizes.get(s) })) : undefined,
       image,

@@ -479,11 +479,7 @@ a.dc-arr{color:#fff;}
 .soon p{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:24px;}
 
 /* ─── CERTIFICATE PICTURES (hover pop-out + click to enlarge) ─── */
-.gmp-strip{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 22px;margin:0 auto 28px;max-width:760px;}
-.gmp-strip .cert-ico{margin:0;flex-shrink:0;}
-.gmp-strip b{display:block;color:var(--primary);font-size:15px;}
-.gmp-strip span:not(.cert-ico){font-size:13px;color:var(--muted);}
-.cert-pics{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1100px;margin:0 auto;}
+.cert-pics{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;max-width:1240px;margin:0 auto;}
 .cert-pic{background:transparent;}
 .cert-pic-btn{all:unset;box-sizing:border-box;display:block;position:relative;width:100%;aspect-ratio:1131/1600;border-radius:12px;overflow:hidden;cursor:zoom-in;background:#fff;border:1px solid var(--border);box-shadow:0 10px 30px rgba(0,48,135,.10);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;}
 .cert-pic-btn:hover,.cert-pic-btn:focus-visible{transform:translateY(-6px);box-shadow:0 22px 50px rgba(0,48,135,.22);}
@@ -504,7 +500,7 @@ a.dc-arr{color:#fff;}
 .cert-m-img img{width:100%;height:auto;display:block;border:1px solid var(--border);}
 .cert-m-body{padding:40px 36px;}
 @media(hover:none){.cert-pop{display:none;}}
-@media(max-width:1024px){.cert-pics{grid-template-columns:repeat(3,1fr);gap:16px;}.cert-m-grid{grid-template-columns:1fr;}.cert-m-img{border-radius:20px 20px 0 0;}}
+@media(max-width:1024px){.cert-pics{grid-template-columns:repeat(2,1fr);gap:20px;}.cert-m-grid{grid-template-columns:1fr;}.cert-m-img{border-radius:20px 20px 0 0;}}
 @media(max-width:680px){.cert-pics{grid-template-columns:1fr;max-width:380px;}}
 
 /* ─── ACCESSIBILITY / BEHAVIOUR (no visual change for mouse users) ─── */
@@ -517,3 +513,48 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}
   .reveal{opacity:1;transform:none;}
 }
+
+/* GMP logo card — same box, border, shadow and hover as the ISO certificate cards */
+.cert-pic-btn.gmp{cursor:default;}
+.cert-pic-btn.gmp img{object-fit:contain;padding:14%;background:#fff;}
+
+/* ─── ABOUT US: larger body text, leading and padding scale with it ─── */
+.about-intro{padding:clamp(72px,7vw,110px) 40px;}
+.about-intro-inner{max-width:1040px;}
+.about-intro p{font-size:clamp(17px,1.4vw,20px);line-height:1.8;margin-bottom:clamp(22px,2vw,30px);}
+@media(max-width:680px){.about-intro{padding:64px 20px;}.about-intro p{font-size:17px;line-height:1.75;}}
+
+/* ─── PRODUCTS MENU: Animal Health fly-out (desktop) + accordions (mobile) ─── */
+.n-sub-wrap{position:relative;}
+.n-sub-btn{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;width:100%;padding:12px 16px;font-size:13px;font-weight:600;color:var(--ink);border-radius:8px;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;font-family:inherit;}
+.n-sub-btn:hover,.n-sub-btn.active,.n-sub-wrap:focus-within .n-sub-btn{background:var(--primary-l);color:var(--accent);}
+.n-sub-btn:focus-visible{outline:3px solid var(--accent);outline-offset:-3px;}
+.n-sub{position:absolute;top:-8px;left:100%;min-width:240px;margin-left:6px;background:#fff;border-radius:12px;box-shadow:0 18px 44px rgba(0,48,135,.16);padding:8px;border:1px solid var(--border);opacity:0;visibility:hidden;transform:translateX(8px);transition:all .2s ease;}
+.n-sub.on,.n-sub-wrap:focus-within .n-sub{opacity:1;visibility:visible;transform:translateX(0);}
+.n-sub::before{content:"";position:absolute;left:-8px;top:0;bottom:0;width:8px;}
+.n-links .n-sub a{display:block;padding:12px 16px;font-size:13px;border-radius:8px;text-transform:uppercase;letter-spacing:.04em;}
+.n-links .n-sub a::after{display:none;}
+.n-links .n-sub a:hover,.n-links .n-sub a.active{background:var(--primary-l);color:var(--accent);}
+
+.n-mobile .n-acc{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;width:100%;padding:18px 0;border-bottom:1px solid var(--border);font-size:17px;font-weight:600;color:var(--primary);cursor:pointer;font-family:inherit;}
+.n-mobile .n-acc:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+.n-acc-ic{font-size:13px;transition:transform .25s ease;}
+.n-acc-ic.on{transform:rotate(180deg);}
+.n-acc-panel{display:none;}
+.n-acc-panel.on{display:block;animation:accIn .25s ease;}
+@keyframes accIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
+.n-mobile .n-acc-panel{padding-left:16px;}
+.n-mobile .n-acc-2{font-size:16px;}
+.n-mobile .n-acc-3{padding-left:16px;}
+.n-mobile .n-acc-panel a{font-size:15.5px;font-weight:600;padding:14px 0;}
+
+/* ─── POULTRY: company sections (same grid, card size and alignment in every section) ─── */
+.co-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:-8px 0 28px;}
+.co-tab{padding:10px 20px;border:1.5px solid var(--border);background:#fff;border-radius:30px;font-size:12.5px;font-weight:700;color:var(--primary);cursor:pointer;font-family:inherit;letter-spacing:.06em;text-transform:uppercase;transition:all .2s;}
+.co-tab:hover{border-color:var(--accent);color:var(--accent);}
+.co-tab.on{background:var(--primary);border-color:var(--primary);color:#fff;}
+.co-sec{margin-bottom:44px;}
+.co-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:14px;margin-bottom:22px;border-bottom:2px solid var(--primary);}
+.co-head h3{font-size:22px;font-weight:800;color:var(--primary);letter-spacing:-.01em;}
+.co-head span{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;}
+.co-sec .pi{height:100%;}

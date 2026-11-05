@@ -47,6 +47,7 @@ for (const cat of CATS) {
     if (/^[a-z]/.test(p.name)) warn(`${tag} name starts lowercase: "${p.name}"`);
     if (/\.(png|jpe?g|webp)$/i.test(p.name)) err(`${tag} file extension in name`);
     if (!p.tagline) err(`${tag} no tagline`);
+    if (cat === "poultry" && !p.company) err(`${tag} no company (poultry page is grouped by company)`);
     if (!p.packing?.length) warn(`${tag} no packing/size`);
     if (p.prices?.length) {
       priced++;

@@ -1,29 +1,188 @@
 {
-  "category": "poultry",
-  "source": "USHNAZ Pharmaceuticals price list, effective 07-July-2026 (Updated-2.pdf, page 4)",
-  "currency": "Rs",
-  "rows": [
-    ["Buxxur","1 Ltr",4687],["Buxxur","5 Ltr",22282],["Buxxur","10 Ltr",42185],
-    ["Fajiro","1 Kg",10989],
-    ["Roctane","1 Kg",6341],
-    ["Choli Fort","25 Kg",37050],["Choli Fort","5 Kg",7800],
-    ["Jofa","1 Ltr",6888],["Jofa","5 Ltr",33174],
-    ["Zaryx","25 Ltr",37184],
-    ["Deltex","1 Ltr",4906],["Deltex","5 Ltr",23303],["Deltex","10 Ltr",44153],
-    ["Carbofur","1 Kg",2352],
-    ["Harpoon","1 Ltr",5872],["Harpoon","5 Ltr",27891],
-    ["Celova","1 Ltr",5376],
-    ["Metalax","1 Kg",2397],
-    ["Xolo","1 Ltr",3480],["Xolo","5 Ltr",16533],
-    ["Gabamax","1 Ltr",3130],["Gabamax","5 Ltr",14873],
-    ["Boostamax","25 Kg",24147],
-    ["Stimax-10","25 Kg",30518],
-    ["Defentix","1 Ltr",4637],["Defentix","5 Ltr",22025],
-    ["Vita Glow","1 Kg",8215],
-    ["Tinzol","1 Kg",2984],
-    ["Xemec","1 Ltr",5035],["Xemec","5 Ltr",23916],["Xemec","10 Ltr",45315],
-    ["UD Plus","1 Ltr",6223],["UD Plus","5 Ltr",29556],["UD Plus","10 Ltr",56004],
-    ["Kim Shield","1 Ltr",6602],
-    ["Metavix","1 Kg",6150]
+ "category": "poultry",
+ "source": "USHNAZ Pharmaceuticals price list, effective 07-July-2026 (Updated-2.pdf, page 4)",
+ "currency": "Rs",
+ "rows": [
+  [
+   "Buxxur",
+   "1 Ltr",
+   4687
+  ],
+  [
+   "Buxxur",
+   "5 Ltr",
+   22282
+  ],
+  [
+   "Buxxur",
+   "10 Ltr",
+   42185
+  ],
+  [
+   "Fajiro",
+   "1 Kg",
+   10989
+  ],
+  [
+   "Roctane",
+   "1 Kg",
+   6341
+  ],
+  [
+   "Choli Fort",
+   "25 Kg",
+   37050
+  ],
+  [
+   "Choli Fort",
+   "5 Kg",
+   7800
+  ],
+  [
+   "Jofa",
+   "1 Ltr",
+   6888
+  ],
+  [
+   "Jofa",
+   "5 Ltr",
+   33174
+  ],
+  [
+   "Zaryx",
+   "25 Ltr",
+   37184
+  ],
+  [
+   "Deltex",
+   "1 Ltr",
+   4906
+  ],
+  [
+   "Deltex",
+   "5 Ltr",
+   23303
+  ],
+  [
+   "Deltex",
+   "10 Ltr",
+   44153
+  ],
+  [
+   "Carbofur",
+   "1 Kg",
+   2352
+  ],
+  [
+   "Harpoon",
+   "1 Ltr",
+   5872
+  ],
+  [
+   "Harpoon",
+   "5 Ltr",
+   27891
+  ],
+  [
+   "Celova",
+   "1 Ltr",
+   5376
+  ],
+  [
+   "Metalax",
+   "1 Kg",
+   2397
+  ],
+  [
+   "Xolo",
+   "1 Ltr",
+   3480
+  ],
+  [
+   "Xolo",
+   "5 Ltr",
+   16533
+  ],
+  [
+   "Gabamax",
+   "1 Ltr",
+   3130
+  ],
+  [
+   "Gabamax",
+   "5 Ltr",
+   14873
+  ],
+  [
+   "Boostamax",
+   "25 Kg",
+   24147
+  ],
+  [
+   "Stimax-10",
+   "25 Kg",
+   30518
+  ],
+  [
+   "Defentix",
+   "1 Ltr",
+   4637
+  ],
+  [
+   "Defentix",
+   "5 Ltr",
+   22025
+  ],
+  [
+   "Vita Glow",
+   "1 Kg",
+   8215
+  ],
+  [
+   "Tinzol",
+   "1 Kg",
+   2984
+  ],
+  [
+   "Xemec",
+   "1 Ltr",
+   5035
+  ],
+  [
+   "Xemec",
+   "5 Ltr",
+   23916
+  ],
+  [
+   "Xemec",
+   "10 Ltr",
+   45315
+  ],
+  [
+   "UD Plus",
+   "1 Ltr",
+   6223
+  ],
+  [
+   "UD Plus",
+   "5 Ltr",
+   29556
+  ],
+  [
+   "UD Plus",
+   "10 Ltr",
+   56004
+  ],
+  [
+   "Kim Shield",
+   "1 Ltr",
+   6602
+  ],
+  [
+   "Metavix",
+   "1 Kg",
+   6150
   ]
+ ],
+ "company": "USHNAZ Pharmaceuticals"
 }
