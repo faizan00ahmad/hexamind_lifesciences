@@ -558,3 +558,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .co-head h3{font-size:22px;font-weight:800;color:var(--primary);letter-spacing:-.01em;}
 .co-head span{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;}
 .co-sec .pi{height:100%;}
+
+/* animated logo in the header (replaces the round mark) */
+.n-logo-anim{height:62px;width:auto;display:block;flex-shrink:0;}
+@media(max-width:680px){.n-logo-anim{height:52px;}}

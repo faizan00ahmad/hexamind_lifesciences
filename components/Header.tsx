@@ -58,13 +58,9 @@ export default function Header() {
 
       <nav id="nav">
         <Link className="n-logo" href="/">
-          <div className="n-logo-mark">
-            <svg viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
-              <path d="M11 3 L18 7 L18 15 L11 19 L4 15 L4 7 Z" fill="none" stroke="#fff" strokeWidth="1.6" />
-              <circle cx="11" cy="10" r="2.5" fill="#fff" />
-              <path d="M11 12.4 L11 16" stroke="#fff" strokeWidth="1.5" />
-            </svg>
-          </div>
+          {/* animated Hexamind logo (plays once, then holds the finished mark) */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="n-logo-anim" src="/logo-animated.webp" alt="" width={55} height={62} decoding="async" />
           <div className="n-logo-text">
             <div className="n-logo-name">Hexamind</div>
             <div className="n-logo-sub">Life Sciences</div>
