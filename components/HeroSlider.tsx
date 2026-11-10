@@ -9,7 +9,7 @@ const SLIDES = [
     img: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=2400&q=85",
     head: (
       <>
-        A GMP-Certified <strong>Global Manufacturer</strong>
+        A GMP-Certified <strong>Manufacturer Worldwide</strong>
       </>
     ),
     sub: "A GMP-certified pharmaceutical manufacturer based in Pakistan, delivering high-quality formulations for human and animal health.",
