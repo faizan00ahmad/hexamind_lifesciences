@@ -46,3 +46,6 @@ Grouped by company (Schiwo, Hint Life, Ushnaz — order set in `COMPANIES`, `lib
 
 ## Products menu
 Animal Health (Poultry / Livestock / Pet) · Human Health · Cosmetics — fly-out on desktop, nested accordions on mobile (`components/Header.tsx`).
+
+## Contact form
+Inquiries are emailed to info@hexamindlifesciences.com through FormSubmit (`components/ContactForm.tsx`, `INQUIRY_EMAIL`). The first message ever sent makes FormSubmit email a one-time activation link to that inbox — click it once, then every inquiry arrives as a table email with the visitor's address as reply-to. A copy is also kept in the visitor's browser.

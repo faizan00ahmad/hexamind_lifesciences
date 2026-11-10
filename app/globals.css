@@ -582,3 +582,5 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .journey-grid,.timeline{display:flex;align-items:stretch;gap:24px;}
   .jr-card,.tl-item{flex:var(--w,1) 1 0;min-width:0;height:auto;}
 }
+.form-ok.form-err{background:#fdecee;border-color:#f3b8c0;color:#9E0E25;}
+.btn-accent:disabled{cursor:wait;}
