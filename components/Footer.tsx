@@ -24,12 +24,16 @@ export default function Footer({ full = false }: { full?: boolean }) {
           </ul>
         </div>
         <div className="fc">
-          <h4>Products</h4>
+          <h4><Link href="/products">Products</Link></h4>
           <ul>
-            <li><Link href="/products">All Products</Link></li>
-            <li><Link href="/poultry">Poultry Products</Link></li>
-            <li><Link href="/large">Large Animals</Link></li>
-            <li><Link href="/pets">Pet Products</Link></li>
+            <li className="fc-group">
+              <span className="fc-label">Animal Health</span>
+              <ul className="fc-sub">
+                <li><Link href="/poultry">Poultry Products</Link></li>
+                <li><Link href="/large">Livestock Products</Link></li>
+                <li><Link href="/pets">Pet Products</Link></li>
+              </ul>
+            </li>
             <li><Link href="/human">Human Health</Link></li>
             <li><Link href="/cosmetics">Cosmetics</Link></li>
           </ul>
