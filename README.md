@@ -45,7 +45,7 @@ Helper scripts: `ocr-prep.mjs` + `ocr.ps1` (Windows OCR of every pack), `classif
 Grouped by company (Schiwo, Hint Life, Ushnaz — order set in `COMPANIES`, `lib/site.ts`). Each page holds one company; the company comes from the price-list file (`company` in `data/prices/*.json`).
 
 ## Product pages
-Three main pages: Animal Health (`/animal-health`, with sub-pages Poultry `/poultry`, Livestock `/large`, Pet `/pets`), Human Health (`/human`), Cosmetics (`/cosmetics`). Hierarchy defined in `MAIN_PAGES` / `ANIMAL_IDS` (`lib/site.ts`); the tab bar shows the three main pages, or the three Animal Health sub-pages when you are on one of them.
+Three main pages: Animal Health (opens the Poultry page `/poultry`; sub-pages Poultry `/poultry`, Livestock `/large`, Pet `/pets`), Human Health (`/human`), Cosmetics (`/cosmetics`). Hierarchy defined in `MAIN_PAGES` / `ANIMAL_IDS` (`lib/site.ts`); the tab bar shows the three main pages, or the three Animal Health sub-pages when you are on one of them.
 
 ## Products menu
 Animal Health (Poultry / Livestock / Pet) · Human Health · Cosmetics — fly-out on desktop, nested accordions on mobile (`components/Header.tsx`).

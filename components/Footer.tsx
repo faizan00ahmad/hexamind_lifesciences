@@ -27,7 +27,7 @@ export default function Footer({ full = false }: { full?: boolean }) {
           <h4><Link href="/products">Products</Link></h4>
           <ul>
             <li className="fc-group">
-              <Link className="fc-label" href="/animal-health">Animal Health</Link>
+              <Link className="fc-label" href="/poultry">Animal Health</Link>
               <ul className="fc-sub">
                 <li><Link href="/poultry">Poultry Products</Link></li>
                 <li><Link href="/large">Livestock Products</Link></li>
