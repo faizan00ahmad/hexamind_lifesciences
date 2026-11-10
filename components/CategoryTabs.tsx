@@ -4,8 +4,8 @@ import { ANIMAL_IDS, CATEGORIES, MAIN_PAGES, type CategoryId } from "@/lib/site"
 // Tab bar under the page hero.
 //  • Animal Health sub-pages (Poultry / Livestock / Pet) show their three sibling tabs.
 //  • Everything else shows the three main pages: Animal Health, Human Health, Cosmetics.
-export default function CategoryTabs({ active }: { active?: CategoryId }) {
-  const sub = !!active && ANIMAL_IDS.includes(active);
+export default function CategoryTabs({ active }: { active?: CategoryId | "animal-health" }) {
+  const sub = !!active && active !== "animal-health" && ANIMAL_IDS.includes(active);
   return (
     <div className="cat-tabs">
       <div className="cat-tabs-in">
