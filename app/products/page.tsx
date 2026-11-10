@@ -2,12 +2,12 @@ import Link from "next/link";
 import CategoryTabs from "@/components/CategoryTabs";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
-import { CATEGORIES, CATEGORY_IDS } from "@/lib/site";
+import { MAIN_PAGES } from "@/lib/site";
 import meta from "@/data/meta.json";
 
 export const metadata = {
   title: "Products | Hexamind Life Sciences",
-  description: "Browse Hexamind's poultry, large animal, pet, human and cosmetics product categories.",
+  description: "Browse Hexamind's Animal Health, Human Health and Cosmetics products.",
 };
 
 export default function ProductsPage() {
@@ -26,16 +26,16 @@ export default function ProductsPage() {
       <section className="sec">
         <div className="sec-inner">
           <div className="cat-grid">
-            {CATEGORY_IDS.map((c, i) => {
-              const m = CATEGORIES[c];
+            {MAIN_PAGES.map((m, i) => {
+              const total = m.members.reduce((n, c) => n + (counts[c] ?? 0), 0);
               return (
-                <Reveal key={c} className="cat-card" delay={(i % 3) as 0 | 1 | 2} href={"/" + c}>
+                <Reveal key={m.id} className="cat-card" delay={(i % 3) as 0 | 1 | 2} href={m.href}>
                   <div className="dc-bg">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={m.heroImg.replace("w=2400", "w=900")} alt={m.label} loading="lazy" /></div>
                   <div className="dc-content">
-                    <h3>{m.menu}</h3>
+                    <h3>{m.label}</h3>
                     <p>{m.sub}</p>
-                    <div className="cat-count">{counts[c] > 0 ? `${counts[c]} products` : "Coming soon"}</div>
-                    <span className="dc-arr">Browse {m.title[0]} →</span>
+                    <div className="cat-count">{total > 0 ? `${total} products` : "Coming soon"}</div>
+                    <span className="dc-arr">Browse {m.label} →</span>
                   </div>
                 </Reveal>
               );

@@ -35,8 +35,11 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
           <div className="bc">
             <Link href="/"><span>Home</span></Link>
             <span><span className="bc-sep">/</span><Link href="/products"><span>Products</span></Link></span>
-            {c.crumb.filter((x) => x !== "Products").map((x) => (
-              <span key={x}><span className="bc-sep">/</span><span>{x}</span></span>
+            {c.crumb.map((x) => (
+              <span key={x.label}>
+                <span className="bc-sep">/</span>
+                {x.href ? <Link href={x.href}><span>{x.label}</span></Link> : <span>{x.label}</span>}
+              </span>
             ))}
           </div>
           <h1>{c.title[0]} <span className="accent">{c.title[1]}</span></h1>
@@ -51,7 +54,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
           </div>
         </div>
       </div>
-      <CategoryTabs active={cat} />
+      <CategoryTabs active={cat === "human" || cat === "cosmetics" ? cat : cat} />
       <section className="sec">
         <div className="sec-inner">
           <ProductBrowser cat={cat} version={version} />

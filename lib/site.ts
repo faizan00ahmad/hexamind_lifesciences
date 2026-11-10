@@ -9,7 +9,7 @@ export interface CategoryMeta {
   label: string; // used in the modal badge
   menu: string; // label in the Products dropdown / category tabs
   heroImg: string;
-  crumb: string[]; // breadcrumb after "Home"
+  crumb: { label: string; href?: string }[]; // breadcrumb after "Home / Products"
   title: [string, string]; // [plain, accent]
   sub: string;
   toolbar: string;
@@ -21,18 +21,18 @@ export const CATEGORIES: Record<CategoryId, CategoryMeta> = {
     menu: "Poultry Products",
     label: "Poultry Products",
     heroImg: "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=2400&q=85",
-    crumb: ["Products", "Poultry"],
+    crumb: [{ label: "Animal Health", href: "/animal-health" }, { label: "Poultry" }],
     title: ["Poultry", "Products"],
     sub: "Comprehensive solutions for poultry health, nutrition, immunity, growth, and productivity.",
     toolbar: "Click a product to view details",
   },
   large: {
     id: "large",
-    menu: "Large Animals Products",
-    label: "Large Animals",
+    menu: "Livestock Products",
+    label: "Livestock Products",
     heroImg: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=2400&q=85",
-    crumb: ["Products", "Large Animals"],
-    title: ["Large", "Animals"],
+    crumb: [{ label: "Animal Health", href: "/animal-health" }, { label: "Livestock" }],
+    title: ["Livestock", "Products"],
     sub: "Veterinary therapeutics for cattle, sheep, goats and equine.",
     toolbar: "Livestock therapeutics",
   },
@@ -41,32 +41,57 @@ export const CATEGORIES: Record<CategoryId, CategoryMeta> = {
     menu: "Pet Products",
     label: "Pet Products",
     heroImg: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=2400&q=85",
-    crumb: ["Products", "Pet Products"],
+    crumb: [{ label: "Animal Health", href: "/animal-health" }, { label: "Pet Products" }],
     title: ["Pet", "Products"],
     sub: "Safe and effective formulations for dogs, cats and companion animals.",
     toolbar: "Companion Animal Therapeutics",
   },
   human: {
     id: "human",
-    menu: "Human Products",
-    label: "Human Products",
+    menu: "Human Health",
+    label: "Human Health",
     heroImg: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=2400&q=85",
-    crumb: ["Human Health"],
+    crumb: [{ label: "Human Health" }],
     title: ["Human", "Health"],
     sub: "Pharmaceutical products manufactured to international GMP and ISO standards.",
     toolbar: "Pharmaceutical Therapeutics",
   },
   cosmetics: {
     id: "cosmetics",
-    menu: "Cosmetics Products",
+    menu: "Cosmetics",
     label: "Cosmetics",
     heroImg: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=2400&q=85",
-    crumb: ["Cosmetics"],
+    crumb: [{ label: "Cosmetics" }],
     title: ["Cosmetics", "Range"],
     sub: "Research-backed skincare and personal-care formulations.",
     toolbar: "Skincare and Personal Care",
   },
 };
+
+// Product navigation: three main pages; Animal Health has three sub-pages.
+export const ANIMAL_IDS: CategoryId[] = ["poultry", "large", "pets"];
+
+export interface MainPage {
+  id: "animal-health" | "human" | "cosmetics";
+  label: string;
+  href: string;
+  heroImg: string;
+  sub: string;
+  members: CategoryId[]; // category pages whose products it covers
+}
+
+export const MAIN_PAGES: MainPage[] = [
+  {
+    id: "animal-health",
+    label: "Animal Health",
+    href: "/animal-health",
+    heroImg: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=2400&q=85",
+    sub: "Targeted solutions keeping poultry, livestock, and companion animals thriving.",
+    members: ANIMAL_IDS,
+  },
+  { id: "human", label: "Human Health", href: "/human", heroImg: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=2400&q=85", sub: "Advanced alternative medicine designed for proactive wellness.", members: ["human"] },
+  { id: "cosmetics", label: "Cosmetics", href: "/cosmetics", heroImg: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=2400&q=85", sub: "Clean, innovative cosmetic formulations that elevate daily routines.", members: ["cosmetics"] },
+];
 
 export interface Product {
   id: string;

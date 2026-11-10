@@ -40,7 +40,7 @@ export default function Header() {
     setSub(false);
   };
   const isAnimal = ANIMAL.some((a) => pathname === a.href);
-  const isProducts = pathname === "/products" || CATEGORY_IDS.some((c) => pathname === "/" + c);
+  const isProducts = pathname === "/products" || pathname === "/animal-health" || CATEGORY_IDS.some((c) => pathname === "/" + c);
   const [dd, setDd] = useState(false);
 
   return (
@@ -81,15 +81,15 @@ export default function Header() {
             </Link>
             <div className={`n-dd-menu${dd ? " on" : ""}`}>
               <div className="n-sub-wrap" onMouseEnter={() => setSub(true)} onMouseLeave={() => setSub(false)}>
-                <button
-                  type="button"
-                  className={`n-sub-btn${isAnimal ? " active" : ""}`}
+                <Link
+                  href="/animal-health"
+                  className={`n-sub-btn${isAnimal || pathname === "/animal-health" ? " active" : ""}`}
                   aria-haspopup="true"
                   aria-expanded={sub}
-                  onClick={() => setSub(!sub)}
+                  onClick={closeDd}
                 >
                   Animal Health <span className="n-caret">▸</span>
-                </button>
+                </Link>
                 <div className={`n-sub${sub ? " on" : ""}`}>
                   {ANIMAL.map((a) => (
                     <Link key={a.href} href={a.href} onClick={closeDd} className={pathname === a.href ? "active" : ""}>
@@ -123,6 +123,7 @@ export default function Header() {
             Animal Health <span className={`n-acc-ic${mAnimal ? " on" : ""}`}>▾</span>
           </button>
           <div className={`n-acc-panel n-acc-3${mAnimal ? " on" : ""}`}>
+            <Link href="/animal-health" onClick={close}>Animal Health Overview</Link>
             {ANIMAL.map((a) => (
               <Link key={a.href} href={a.href} onClick={close}>{a.label}</Link>
             ))}

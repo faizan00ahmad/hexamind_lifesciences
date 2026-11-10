@@ -584,3 +584,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 }
 .form-ok.form-err{background:#fdecee;border-color:#f3b8c0;color:#9E0E25;}
 .btn-accent:disabled{cursor:wait;}
+
+.fc a.fc-label{color:#fff;padding-left:0;}
+.fc a.fc-label:hover{color:#fff;padding-left:4px;}
