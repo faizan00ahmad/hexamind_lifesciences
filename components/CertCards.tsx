@@ -35,7 +35,7 @@ export default function CertCards() {
             </span>
           </div>
           <div className="cert-cap">
-            <b>GMP</b>
+            <b>A GMP - Certified Global Manufacturer</b>
             <span>Good Manufacturing Practices · {GMP.year}</span>
           </div>
         </Reveal>
