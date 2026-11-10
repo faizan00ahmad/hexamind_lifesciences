@@ -19,7 +19,7 @@ export default function ProductsPage() {
         <div className="ph-inner">
           <div className="bc"><Link href="/"><span>Home</span></Link><span className="bc-sep">/</span><span>Products</span></div>
           <h1>Our <span className="accent">Products</span></h1>
-          <p className="ph-sub">Pharmaceutical and veterinary formulations across five integrated divisions — choose a category to browse.</p>
+          <p className="ph-sub">Explore our diverse range of healthcare solutions across five specialized divisions.</p>
         </div>
       </div>
       <CategoryTabs />
