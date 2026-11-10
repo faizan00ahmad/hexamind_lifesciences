@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CATEGORIES, WA, rs, type CategoryId, type Product } from "@/lib/site";
+import { CATEGORIES, WA, type CategoryId, type Product } from "@/lib/site";
 
 export default function ProductModal({
   cat,
@@ -31,7 +31,6 @@ export default function ProductModal({
   const forSize = gallery.filter((g) => !size || g.size === size || g.size == null);
   const list = forSize.length ? forSize : gallery;
   const img = list.length ? (view && list.some((l) => l.src === view) ? view : list[0].src) : "";
-  const unit = product.prices?.find((x) => x.size === size);
 
   const msg = encodeURIComponent(
     `Hi, I'm interested in ordering *${product.name}*${size ? " (" + size + ")" : ""} from Hexamind Life Sciences. Please provide pricing and availability.`,
@@ -70,20 +69,6 @@ export default function ProductModal({
               <div className="m-row-ico">📦</div>
               <div><div className="m-row-lbl">Packing</div><div className="m-row-val">{product.packing.join(" · ")}</div></div>
             </div>
-            {product.prices && product.prices.length > 0 && (
-              <div className="m-row">
-                <div className="m-row-ico">₨</div>
-                <div>
-                  <div className="m-row-lbl">Market Price{unit && product.prices.length > 1 ? ` · ${unit.size}` : ""}</div>
-                  <div className="m-row-val">{rs((unit ?? product.prices[0]).amount)}</div>
-                  {product.prices.length > 1 && (
-                    <div className="m-row-txt" style={{ marginTop: 6 }}>
-                      {product.prices.map((x) => `${x.size}: ${rs(x.amount)}`).join("  ·  ")}
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
             {product.comp.length > 0 && (
               <div className="m-row">
                 <div className="m-row-ico">🧪</div>

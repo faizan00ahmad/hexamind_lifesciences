@@ -104,7 +104,6 @@ export interface Product {
   chars: string[];
   group?: string; // sub-filter (e.g. Vitamins, Antibiotics)
   company?: string; // brand/company the product belongs to (poultry page is grouped by it)
-  prices?: { size: string; amount: number }[]; // market price per pack size (PKR)
   image?: string; // thumbnail path under /products
   full?: string; // large image used in the modal
   gallery?: { size: string | null; src: string }[]; // every render: other sizes / front & back views (first = main)
@@ -115,15 +114,6 @@ export interface CatalogFile {
   v: string; // content hash — bumps the browser cache when data changes
   category: CategoryId;
   products: Product[];
-}
-
-export const rs = (n: number) => `Rs ${n.toLocaleString("en-US")}`;
-
-// "Rs 5,034" for a single price, "From Rs 5,034" when several pack sizes are priced
-export function priceLabel(p: Product): string | null {
-  if (!p.prices?.length) return null;
-  const min = Math.min(...p.prices.map((x) => x.amount));
-  return (p.prices.length > 1 ? "From " : "") + rs(min);
 }
 
 // Poultry page sections, in the order the client listed them.

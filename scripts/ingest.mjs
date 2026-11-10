@@ -215,7 +215,7 @@ async function buildCategory(cat, report) {
       chars: fx.chars ?? [],
       company: priced?.company ?? g.images[0]?.brand,
       group: g.group ?? formGroup(g.name, sizes),
-      prices: priced ? sizes.filter((s) => priced.sizes.has(s)).map((s) => ({ size: label(s), amount: priced.sizes.get(s) })) : undefined,
+      // prices are intentionally NOT published (client request); they stay in data/prices/*.json
       image,
       full,
       gallery: gallery?.map((x) => ({ size: x.size ? label(x.size) : null, src: x.src })),

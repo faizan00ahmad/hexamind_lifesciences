@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { loadCatalog } from "@/lib/catalogCache";
-import { CATEGORIES, COMPANIES, WA, priceLabel, type CategoryId, type Product } from "@/lib/site";
+import { CATEGORIES, COMPANIES, WA, type CategoryId, type Product } from "@/lib/site";
 import ProductModal from "./ProductModal";
 
 const PAGE_SIZE = 12;
@@ -202,7 +202,7 @@ export default function ProductBrowser({ cat, version }: { cat: CategoryId; vers
                   <div className="pi-n">{p.name}</div>
                   <div className="pi-t">{p.tagline}</div>
                   <div className="pi-meta">
-                    <span className="pi-pack">{priceLabel(p) ?? p.packing[0]}</span>
+                    <span className="pi-pack">{p.packing.length > 1 ? `${p.packing.length} pack sizes` : p.packing[0]}</span>
                     <span className="pi-link">View →</span>
                   </div>
                 </div>
