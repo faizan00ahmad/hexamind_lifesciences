@@ -23,7 +23,7 @@ export const CATEGORIES: Record<CategoryId, CategoryMeta> = {
     heroImg: "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=2400&q=85",
     crumb: ["Products", "Poultry"],
     title: ["Poultry", "Products"],
-    sub: "Antibiotics, vitamins, immunity enhancers and growth promoters for commercial poultry operations.",
+    sub: "Comprehensive solutions for poultry health, nutrition, immunity, growth, and productivity.",
     toolbar: "Click a product to view details",
   },
   large: {
