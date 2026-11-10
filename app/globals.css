@@ -576,3 +576,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .fc .fc-sub{margin-left:14px;padding-left:14px;border-left:1px solid rgba(255,255,255,.18);}
 .fc .fc-sub li:last-child{margin-bottom:0;}
 .fc .fc-group{margin-bottom:12px;}
+
+/* ─── DESKTOP: card widths follow their text length → equal heights, no empty space (see --w in page.tsx) ─── */
+@media(min-width:1025px){
+  .journey-grid,.timeline{display:flex;align-items:stretch;gap:24px;}
+  .jr-card,.tl-item{flex:var(--w,1) 1 0;min-width:0;height:auto;}
+}

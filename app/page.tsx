@@ -5,6 +5,10 @@ import Reveal from "@/components/Reveal";
 import Footer from "@/components/Footer";
 import meta from "@/data/meta.json";
 
+// Card widths on desktop follow the text length, so every card ends up the same height with no empty space.
+const JR_OFFSET = 0;
+const TL_OFFSET = 0;
+
 const JOURNEY: [string, string][] = [
   ["The Spark", "Hexamind Life Sciences was born in 2021 with a bold mandate: to redefine human and animal well-being through uncompromised quality, relentless innovation, and manufacturing excellence. We looked at the traditional healthcare landscape and saw an opportunity to bridge the gap between nature, science, and everyday vitality."],
   ["The Hub", "Rooted in the Vehari Industrial Estates in Punjab, Pakistan, we built a high-standard, forward-thinking manufacturing ecosystem. From this strategic hub, we engineer products that meet both local demands and international expectations."],
@@ -81,7 +85,7 @@ export default function Home() {
           </div>
           <div className="journey-grid">
             {JOURNEY.map(([t, p], i) => (
-              <Reveal key={t} className="jr-card" delay={(i % 4) as 0 | 1 | 2 | 3}>
+              <Reveal key={t} className="jr-card" delay={(i % 4) as 0 | 1 | 2 | 3} style={{ "--w": p.length + JR_OFFSET } as React.CSSProperties}>
                 <div className="jr-n">{String(i + 1).padStart(2, "0")}</div>
                 <h3>{t}</h3>
                 <p>{p}</p>
@@ -99,7 +103,7 @@ export default function Home() {
           </div>
           <div className="timeline">
             {MILESTONES.map(([y, t, items], i) => (
-              <Reveal key={y} className="tl-item" delay={i as 0 | 1 | 2 | 3}>
+              <Reveal key={y} className="tl-item" delay={i as 0 | 1 | 2 | 3} style={{ "--w": items.join("").length + t.length + TL_OFFSET } as React.CSSProperties}>
                 <div className="tl-marker">{i + 1}</div>
                 <div className="tl-year">{y}</div>
                 <div className="tl-head">{t}</div>

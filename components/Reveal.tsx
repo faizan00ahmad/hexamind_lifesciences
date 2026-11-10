@@ -10,11 +10,13 @@ export default function Reveal({
   className = "",
   delay = 0,
   href,
+  style,
 }: {
   children: React.ReactNode;
   className?: string;
   delay?: 0 | 1 | 2 | 3;
   href?: string;
+  style?: React.CSSProperties;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -41,6 +43,7 @@ export default function Reveal({
     <div
       ref={ref}
       className={`${className} reveal${delay ? " d" + delay : ""}`.trim()}
+      style={style}
       onClick={href ? () => router.push(href) : undefined}
     >
       {children}
