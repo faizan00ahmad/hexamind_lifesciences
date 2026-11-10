@@ -562,3 +562,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 /* animated logo in the header (replaces the round mark) */
 .n-logo-anim{height:62px;width:auto;display:block;flex-shrink:0;}
 @media(max-width:680px){.n-logo-anim{height:52px;}}
+
+/* ─── CARD ALIGNMENT: equal-height cards, content lines up across each row ─── */
+.jr-card,.tl-item{display:flex;flex-direction:column;height:100%;}
+.jr-card p{flex:1;}
+.tl-list{flex:1;}
+/* milestone titles reserve two lines so the bullet lists start at the same height in every card */
+@media(min-width:681px){.tl-head{min-height:2.7em;display:flex;align-items:center;justify-content:center;}}
