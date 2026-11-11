@@ -8,7 +8,7 @@ import meta from "@/data/meta.json";
 // Journey + milestone texts are written to the same length (about 32 words per journey card; 28 per milestone card, tuned so each card wraps to the same number of lines)
 // so the cards line up as equal-width, equal-height blocks.
 const JOURNEY: [string, string][] = [
-  ["The Spark", "Hexamind Life Sciences was founded in 2021 with one bold mandate: to redefine human and animal well-being through uncompromised quality, relentless innovation and manufacturing excellence, bridging nature, science and everyday vitality."],
+  ["The Spark", "Hexamind Life Sciences was founded in 2021 with one bold mandate: to redefine human and animal well-being through uncompromised quality, relentless innovation and manufacturing excellence, bridging nature, science and everyday human vitality."],
   ["The Hub", "Rooted in the Vehari Industrial Estates of Punjab, Pakistan, we built a high-standard, forward-thinking manufacturing ecosystem. From this strategic hub, we engineer dependable formulations that meet both local demands and international expectations."],
   ["The Ecosystem", "Health is connected; our portfolio spans human healthcare with alternative medicine for proactive wellness, animal health solutions for poultry, livestock and companion animals, and personal care with clean, innovative, effective cosmetic formulations."],
   ["The Standard", "Quality is never merely a goal; it is our unwavering baseline. Every formulation leaving our facility carries strict GMP compliance, internationally recognised ISO standards and continuous improvement, continually pushing industry benchmarks forward."],
