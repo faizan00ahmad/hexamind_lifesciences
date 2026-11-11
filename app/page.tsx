@@ -5,22 +5,20 @@ import Reveal from "@/components/Reveal";
 import Footer from "@/components/Footer";
 import meta from "@/data/meta.json";
 
-// Card widths on desktop follow the text length, so every card ends up the same height with no empty space.
-const JR_OFFSET = 0;
-const TL_OFFSET = 0;
-
+// Journey + milestone texts are written to the same length (about 32 words per journey card; 28 per milestone card, tuned so each card wraps to the same number of lines)
+// so the cards line up as equal-width, equal-height blocks.
 const JOURNEY: [string, string][] = [
-  ["The Spark", "Hexamind Life Sciences was born in 2021 with a bold mandate: to redefine human and animal well-being through uncompromised quality, relentless innovation, and manufacturing excellence. We looked at the traditional healthcare landscape and saw an opportunity to bridge the gap between nature, science, and everyday vitality."],
-  ["The Hub", "Rooted in the Vehari Industrial Estates in Punjab, Pakistan, we built a high-standard, forward-thinking manufacturing ecosystem. From this strategic hub, we engineer products that meet both local demands and international expectations."],
-  ["The Ecosystem", "Health is connected. That’s why we’ve developed a diverse, cross-industry portfolio spanning Human Healthcare (advanced alternative medicine designed for proactive wellness), Animal Health (targeted solutions keeping poultry, livestock, and companion animals thriving) and Personal Care (clean, innovative cosmetic formulations that elevate daily routines)."],
-  ["The Standard", "For us, quality isn’t a goal—it’s our baseline. Every formulation that leaves our facility is backed by strict GMP compliance, ISO standards, and an obsession with continuous improvement. We don't just follow industry benchmarks; we push them forward."],
+  ["The Spark", "Hexamind Life Sciences was founded in 2021 with one bold mandate: to redefine human and animal well-being through uncompromised quality, relentless innovation and manufacturing excellence, bridging nature, science and everyday vitality."],
+  ["The Hub", "Rooted in the Vehari Industrial Estates of Punjab, Pakistan, we built a high-standard, forward-thinking manufacturing ecosystem. From this strategic hub, we engineer dependable formulations that meet both local demands and international expectations."],
+  ["The Ecosystem", "Health is connected; our portfolio spans human healthcare with alternative medicine for proactive wellness, animal health solutions for poultry, livestock and companion animals, and personal care with clean, innovative, effective cosmetic formulations."],
+  ["The Standard", "Quality is never merely a goal; it is our unwavering baseline. Every formulation leaving our facility carries strict GMP compliance, internationally recognised ISO standards and continuous improvement, continually pushing industry benchmarks forward."],
 ];
 
 const MILESTONES: [string, string, string[]][] = [
-  ["2020", "Vision & Infrastructure Development", ["Facility Planning: developed the blueprint for an advanced manufacturing facility dedicated to human and veterinary alternative medicines, alongside cosmetic formulations.", "Construction Begins: started building our manufacturing facility in Vehari Industrial Estates, Punjab, Pakistan."]],
-  ["2021", "Company Incorporation & Veterinary Market Entry", ["Company Incorporation: established Hexamind Life Sciences (Pvt.) Ltd. for our journey in human and animal healthcare.", "Veterinary Portfolio Launch: introduced specialized formulations for poultry, livestock, and companion animals."]],
-  ["2024", "Portfolio Expansion", ["Human Healthcare: expanded into human alternative medicines with our own portfolio of brands.", "Personal Care: introduced innovative cosmetic formulations, extending our portfolio into personal care."]],
-  ["2025", "GMP Certification & Manufacturing Advancement", ["GMP Certification: achieved Good Manufacturing Practices certification for human and veterinary alternative medicines.", "Production Capabilities: commissioned dedicated, high-capacity manufacturing lines to support growth and international markets.", "Strategic Partnerships: strengthened collaboration with key partners, including Schiwo Pakistan, to broaden market reach and distribution."]],
+  ["2020", "Vision, Planning & Infrastructure Development", ["Facility Planning: designed an advanced facility blueprint for human and veterinary alternative medicines and cosmetics.", "Construction Begins: started building our manufacturing facility in Vehari Industrial Estates, Punjab, Pakistan."]],
+  ["2021", "Incorporation & Veterinary Market Entry", ["Company Incorporation: established Hexamind Life Sciences (Pvt.) Ltd. for our journey in human and animal healthcare.", "Veterinary Portfolio Launch: introduced specialized formulations for poultry, livestock and companion animals."]],
+  ["2024", "Portfolio Expansion & Personal Care", ["Human Healthcare: expanded into human alternative medicines with our own portfolio of proven brands.", "Personal Care: introduced innovative cosmetic formulations, extending our portfolio into everyday personal care."]],
+  ["2025", "GMP Certification & Manufacturing Advancement", ["GMP Certification: achieved Good Manufacturing Practices certification for human and veterinary medicines in 2025.", "Production Capabilities: commissioned dedicated, high-capacity lines and strengthened Schiwo Pakistan partnerships."]],
 ];
 
 const U = (id: string, w: number) => `https://images.unsplash.com/${id}?w=${w}&q=85`;
@@ -85,7 +83,7 @@ export default function Home() {
           </div>
           <div className="journey-grid">
             {JOURNEY.map(([t, p], i) => (
-              <Reveal key={t} className="jr-card" delay={(i % 4) as 0 | 1 | 2 | 3} style={{ "--w": p.length + JR_OFFSET } as React.CSSProperties}>
+              <Reveal key={t} className="jr-card" delay={(i % 4) as 0 | 1 | 2 | 3}>
                 <div className="jr-n">{String(i + 1).padStart(2, "0")}</div>
                 <h3>{t}</h3>
                 <p>{p}</p>
@@ -103,7 +101,7 @@ export default function Home() {
           </div>
           <div className="timeline">
             {MILESTONES.map(([y, t, items], i) => (
-              <Reveal key={y} className="tl-item" delay={i as 0 | 1 | 2 | 3} style={{ "--w": items.join("").length + t.length + TL_OFFSET } as React.CSSProperties}>
+              <Reveal key={y} className="tl-item" delay={i as 0 | 1 | 2 | 3}>
                 <div className="tl-marker">{i + 1}</div>
                 <div className="tl-year">{y}</div>
                 <div className="tl-head">{t}</div>
