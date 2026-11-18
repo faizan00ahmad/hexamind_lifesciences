@@ -53,7 +53,7 @@ export default function Home() {
             <div className="dc-content">
               <div className="dc-ico">℞</div>
               <h3>Products</h3>
-              <p>Specializing in pharmaceutical and veterinary formulations across five integrated divisions.</p>
+              <p>Specializing in human and veterinary formulations across five integrated divisions.</p>
               <ul className="dc-list">
                 <li>Poultry — {n(meta.poultry)}</li>
                 <li>Large Animals — {n(meta.large)}</li>
@@ -68,7 +68,7 @@ export default function Home() {
             <div className="dc-content">
               <div className="dc-ico">⚗</div>
               <h3>R&amp;D</h3>
-              <p>An R&amp;D driven company manufacturing pharmaceutical and veterinary formulations focused on quality and innovation. Our research team continuously develops new products for emerging market needs.</p>
+              <p>We are an R&amp;D-driven company that manufactures human and veterinary pharmaceutical formulations with a focus on quality and innovation. Our research team continually develops new products to meet emerging market needs.</p>
               <a className="dc-arr">Explore R&amp;D →</a>
             </div>
           </Reveal>

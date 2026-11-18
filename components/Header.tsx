@@ -47,7 +47,7 @@ export default function Header() {
     <>
       <div className="top-strip">
         <div className="top-strip-l">
-          <a><span>📍</span> Plot 88/89, Vehari, Punjab</a>
+          <a><span>📍</span> Plot 88/89, Vehari, Punjab, Pakistan</a>
           <a><span>✆</span> +92 61 6775815</a>
           <a><span>✉</span> info@hexamindlifesciences.com</a>
         </div>
