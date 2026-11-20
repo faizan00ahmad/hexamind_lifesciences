@@ -54,7 +54,7 @@ export function saveInquiry(entry: Omit<Inquiry, "at">) {
   try {
     const list: Inquiry[] = JSON.parse(localStorage.getItem(INQ_KEY) || "[]");
     list.push({ at: new Date().toISOString(), ...entry });
-    localStorage.setItem(INQ_KEY, JSON.stringify(list));
+    localStorage.setItem(INQ_KEY, JSON.stringify(list.slice(-20))); // never grows without limit
   } catch {
     /* ignore */
   }

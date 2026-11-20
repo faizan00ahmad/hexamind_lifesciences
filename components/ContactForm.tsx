@@ -18,7 +18,6 @@ export default function ContactForm() {
     const f = Object.fromEntries(new FormData(form)) as Record<string, string>;
     if (f._honey) return; // hidden field: only bots fill it in
     setStatus("sending");
-    saveInquiry(f); // copy kept in this browser as a backup
     try {
       const res = await fetch(`https://formsubmit.co/ajax/${INQUIRY_EMAIL}`, {
         method: "POST",
@@ -40,6 +39,7 @@ export default function ContactForm() {
       setStatus("sent");
       form.reset();
     } catch {
+      saveInquiry(f); // only a message that failed to send is kept in this browser (so it is not lost)
       setStatus("error");
     }
   }

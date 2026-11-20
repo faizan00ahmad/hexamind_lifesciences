@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useDeferredValue, useEffect, useMemo, useState } from "react";
 import { loadCatalog } from "@/lib/catalogCache";
 import { CATEGORIES, COMPANIES, WA, type CategoryId, type Product } from "@/lib/site";
 import ProductModal from "./ProductModal";
@@ -59,17 +59,19 @@ export default function ProductBrowser({ cat, version }: { cat: CategoryId; vers
     return i < 0 ? 99 : i;
   };
 
+  // Search index: lower-cased name + tagline per product, built once per catalogue (not on every keystroke).
+  const index = useMemo(() => new Map((products ?? []).map((p) => [p.id, `${p.name} ${p.tagline}`.toLowerCase()])), [products]);
+  const deferredQ = useDeferredValue(q);
+
   const filtered = useMemo(() => {
     if (!products) return [];
-    const needle = q.trim().toLowerCase();
+    const needle = deferredQ.trim().toLowerCase();
     const list = products.filter(
-      (p) =>
-        (group === "All" || p.group === group) &&
-        (!needle || p.name.toLowerCase().includes(needle) || p.tagline.toLowerCase().includes(needle)),
+      (p) => (group === "All" || p.group === group) && (!needle || (index.get(p.id) ?? "").includes(needle)),
     );
     // grouped by company (client order), alphabetical inside each company
     return companies.length ? [...list].sort((a, b) => rank(a) - rank(b) || a.name.localeCompare(b.name)) : list;
-  }, [products, group, q, companies]);
+  }, [products, group, deferredQ, index, companies]);
 
   // Pages: with company sections every page holds ONE company; its products are split evenly across its pages
   // (e.g. 38 -> 13 + 13 + 12; 22 -> 11 + 11) so no page is left with a stray one or two cards.
@@ -137,7 +139,7 @@ export default function ProductBrowser({ cat, version }: { cat: CategoryId; vers
         <button
           className="btn-accent"
           onClick={() =>
-            window.open(`https://wa.me/${WA}?text=${encodeURIComponent(`Hi, I'd like to know about your ${meta.label} range.`)}`, "_blank")
+            window.open(`https://wa.me/${WA}?text=${encodeURIComponent(`Hi, I'd like to know about your ${meta.label} range.`)}`, "_blank", "noopener,noreferrer")
           }
         >
           Enquire on WhatsApp →

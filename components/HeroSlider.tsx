@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 // Headlines and descriptions from the client's "HEXAMIND WEBSITE.docx".
 const SLIDES = [
@@ -30,24 +30,28 @@ export default function HeroSlider() {
   const [bg, setBg] = useState(SLIDES[0].img);
   const [fade, setFade] = useState(1);
   const [paused, setPaused] = useState(false);
-  const [reduced, setReduced] = useState(false);
+  const reduced = useSyncExternalStore(
+    (cb) => {
+      const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+      mq.addEventListener("change", cb);
+      return () => mq.removeEventListener("change", cb);
+    },
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    () => false,
+  );
+  const swap = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mq.matches);
-    const on = () => setReduced(mq.matches);
-    mq.addEventListener("change", on);
-    return () => mq.removeEventListener("change", on);
-  }, []);
-
+  // only one background swap can be pending, so quick dot clicks never leave the image and the slide out of step
   const go = (i: number) => {
+    if (swap.current) clearTimeout(swap.current);
     setSi(i);
     setFade(0);
-    setTimeout(() => {
+    swap.current = setTimeout(() => {
       setBg(SLIDES[i].img);
       setFade(1);
     }, 400);
   };
+  useEffect(() => () => { if (swap.current) clearTimeout(swap.current); }, []);
 
   useEffect(() => {
     if (paused || reduced) return;
@@ -59,7 +63,15 @@ export default function HeroSlider() {
     <section className="hero" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)}>
       <div className="hero-bg">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={bg} alt="Manufacturing" style={{ opacity: fade }} fetchPriority="high" decoding="async" />
+        <img
+          src={bg}
+          srcSet={[800, 1400, 2400].map((w) => `${bg.replace("w=2400", "w=" + w)} ${w}w`).join(", ")}
+          sizes="100vw"
+          alt="Manufacturing"
+          style={{ opacity: fade }}
+          fetchPriority="high"
+          decoding="async"
+        />
       </div>
       <div className="hero-inner">
         <div className="h-l">

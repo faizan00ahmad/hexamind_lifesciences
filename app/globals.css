@@ -607,3 +607,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .team-role{font-size:14.5px;color:#777;}
 @media(max-width:1024px){.team-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:680px){.team-sec{padding:60px 20px;}.team-grid{grid-template-columns:1fr;gap:20px;}}
+
+/* ─── SMALL-PHONE SIDEWAYS SCROLL FIX ─── */
+.ct-grid>*{min-width:0;}
+@media(max-width:1024px){.ct-grid{grid-template-columns:minmax(0,1fr);}}
+.global-inner>*,.dual-sec-inner>*,.facility-inner>*{min-width:0;}
+@media(max-width:1024px){.global-inner,.dual-sec-inner,.facility-inner{grid-template-columns:minmax(0,1fr);}}
+.ic>div:last-child{min-width:0;}
+.ic-val,.ic-sub{overflow-wrap:anywhere;}

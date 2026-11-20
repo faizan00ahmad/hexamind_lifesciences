@@ -9,7 +9,7 @@ export default function FloatButtons() {
         className="fb-btn wa"
         title="WhatsApp"
         onClick={() =>
-          window.open(`https://wa.me/${WA}?text=${encodeURIComponent("Hi, I am interested in your products")}`, "_blank")
+          window.open(`https://wa.me/${WA}?text=${encodeURIComponent("Hi, I am interested in your products")}`, "_blank", "noopener,noreferrer")
         }
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="white">

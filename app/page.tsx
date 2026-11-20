@@ -49,7 +49,7 @@ export default function Home() {
       <section className="dual-sec">
         <div className="dual-sec-inner">
           <Reveal className="dc-card" href="/products">
-            <div className="dc-bg">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={U("photo-1587854692152-cbe660dbde88", 1200)} alt="Products" /></div>
+            <div className="dc-bg">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={U("photo-1587854692152-cbe660dbde88", 1200)} alt="Products" loading="lazy" /></div>
             <div className="dc-content">
               <div className="dc-ico">℞</div>
               <h3>Products</h3>
@@ -64,7 +64,7 @@ export default function Home() {
             </div>
           </Reveal>
           <Reveal className="dc-card" delay={1}>
-            <div className="dc-bg">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={U("photo-1576671081837-49000212a370", 1200)} alt="R&D" /></div>
+            <div className="dc-bg">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={U("photo-1576671081837-49000212a370", 1200)} alt="R&D" loading="lazy" /></div>
             <div className="dc-content">
               <div className="dc-ico">⚗</div>
               <h3>R&amp;D</h3>

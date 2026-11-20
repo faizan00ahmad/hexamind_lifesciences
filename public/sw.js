@@ -31,8 +31,13 @@ async function staleWhileRevalidate(req, name) {
   const cache = await caches.open(name);
   const hit = await cache.match(req);
   const net = fetch(req)
-    .then((res) => {
-      if (res.ok) cache.put(req, res.clone());
+    .then(async (res) => {
+      if (res.ok) {
+        // drop older copies of the same file (e.g. poultry.json?v=OLD) so the cache does not pile up
+        const path = new URL(req.url).pathname;
+        for (const k of await cache.keys()) if (new URL(k.url).pathname === path && k.url !== req.url) await cache.delete(k);
+        await cache.put(req, res.clone());
+      }
       return res;
     })
     .catch(() => hit);
@@ -47,5 +52,6 @@ self.addEventListener("fetch", (e) => {
 
   if (url.pathname.startsWith("/products/")) e.respondWith(cacheFirst(req, IMG));
   else if (url.pathname.startsWith("/data/")) e.respondWith(staleWhileRevalidate(req, DATA));
+  else if (url.pathname.startsWith("/images/") || url.pathname === "/logo-animated.webp") e.respondWith(staleWhileRevalidate(req, IMG)); // same filename can be replaced, so revalidate
   else if (url.pathname.startsWith("/_next/static/")) e.respondWith(cacheFirst(req, STATIC));
 });

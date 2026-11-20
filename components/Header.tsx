@@ -23,16 +23,19 @@ export default function Header() {
     };
   }, [open]);
 
+  const [dd, setDd] = useState(false);
   const [sub, setSub] = useState(false); // desktop: Animal Health fly-out
   const [mProducts, setMProducts] = useState(false); // mobile accordions
   const [mAnimal, setMAnimal] = useState(false);
 
-  // close every menu when the page changes
-  useEffect(() => {
+  // close every menu when the page changes (state reset during render, no extra effect pass)
+  const [prevPath, setPrevPath] = useState(pathname);
+  if (prevPath !== pathname) {
+    setPrevPath(pathname);
     setOpen(false);
     setDd(false);
     setSub(false);
-  }, [pathname]);
+  }
 
   const close = () => setOpen(false);
   const closeDd = () => {
@@ -41,7 +44,6 @@ export default function Header() {
   };
   const isAnimal = ANIMAL.some((a) => pathname === a.href);
   const isProducts = pathname === "/products" || pathname === "/animal-health" || CATEGORY_IDS.some((c) => pathname === "/" + c);
-  const [dd, setDd] = useState(false);
 
   return (
     <>
