@@ -163,6 +163,38 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="team-sec" id="team">
+        <div className="team-inner">
+          <div className="section-head">
+            <div className="label">Our People</div>
+            <h2>Meet Our Team</h2>
+          </div>
+          <div className="team-grid">
+            {[
+              ["Member Name", "Chief Executive Officer", 0],
+              ["Member Name", "Product Manager", 1],
+              ["Member Name", "Sale Team", 2],
+              ["Member Name", "Accountant", 0],
+            ].map(([n, r, d], i) => (
+              <Reveal key={i} className="team-card" delay={d as 0 | 1 | 2}>
+                <div className="team-photo">
+                  <svg viewBox="0 0 200 220" aria-hidden="true" preserveAspectRatio="xMidYMax slice">
+                    <path d="M0 220c4-38 22-52 56-62l30-10h28l30 10c34 10 52 24 56 62z" fill="#fff" />
+                    <path d="M86 148l14 24 14-24z" fill="#c9d0e2" />
+                    <rect x="84" y="118" width="32" height="34" rx="10" fill="#fff" />
+                    <ellipse cx="100" cy="82" rx="36" ry="46" fill="#fff" />
+                  </svg>
+                </div>
+                <div className="team-info">
+                  <div className="team-name">{n}</div>
+                  <div className="team-role">{r}</div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="collab-sec">
         <div className="collab-bg">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={U("photo-1576091160399-112ba8d25d1d", 2400)} alt="Lab" loading="lazy" /></div>
         <Reveal className="collab-inner">
