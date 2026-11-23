@@ -171,19 +171,21 @@ export default function Home() {
           </div>
           <div className="team-grid">
             {[
-              ["Member Name", "Chief Executive Officer", 0],
-              ["Member Name", "Product Manager", 1],
-              ["Member Name", "Sale Team", 2],
-              ["Member Name", "Accountant", 0],
-            ].map(([n, r, d], i) => (
+              ["Imran Shah Hashmi", "Founder & CEO", "Chartered Certified Accountant (ACCA)", 0],
+              ["Dr. Nadeem Aslam Bhatti", "Director Marketing", "MPhil in Veterinary Sciences", 1],
+              ["Mr. Hassan Raza Shah", "Director Sales", "LLB", 2],
+              ["Mr. Muhammad Javed Hashmi", "Director", "", 0],
+              ["Mr. Muhammad Khalid Hashmi", "Director", "", 1],
+            ].map(([n, r, q, d], i) => (
               <Reveal key={i} className="team-card" delay={d as 0 | 1 | 2}>
-                <div className="team-photo">
-                  <svg viewBox="0 0 200 220" aria-hidden="true" preserveAspectRatio="xMidYMax slice">
-                    <path d="M0 220c4-38 22-52 56-62l30-10h28l30 10c34 10 52 24 56 62z" fill="#fff" />
-                    <path d="M86 148l14 24 14-24z" fill="#c9d0e2" />
-                    <rect x="84" y="118" width="32" height="34" rx="10" fill="#fff" />
-                    <ellipse cx="100" cy="82" rx="36" ry="46" fill="#fff" />
-                  </svg>
+                <div className="team-photo" tabIndex={0} aria-label={`${n}, ${r}${q ? ", " + q : ""}`}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={`/images/team/member-${i + 1}.webp`} alt={`${n}, ${r}`} loading="lazy" decoding="async" />
+                  <div className="team-ov" aria-hidden="true">
+                    <div className="team-ov-n">{n}</div>
+                    <div className="team-ov-r">{r}</div>
+                    {q && <div className="team-ov-q">{q}</div>}
+                  </div>
                 </div>
                 <div className="team-info">
                   <div className="team-name">{n}</div>

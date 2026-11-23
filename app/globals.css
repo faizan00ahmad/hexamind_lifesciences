@@ -598,15 +598,21 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 /* ─── MEET OUR TEAM ─── */
 .team-sec{padding:100px 40px;background:#fff;}
 .team-inner{max-width:1400px;margin:0 auto;}
-.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;}
-.team-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 14px rgba(0,31,91,.12);}
-.team-photo{background:#c9d0e2;aspect-ratio:1/1.05;display:flex;align-items:flex-end;}
-.team-photo svg{width:100%;height:100%;display:block;}
+.team-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;}
+.team-card{flex:0 0 calc((100% - 120px) / 5);min-width:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 14px rgba(0,31,91,.12);}
+.team-photo{position:relative;overflow:hidden;background:#c9d0e2;aspect-ratio:1/1.05;display:flex;align-items:flex-end;outline-offset:-3px;}
+.team-ov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:20px 18px;color:#fff;background:linear-gradient(180deg,rgba(0,31,91,.1) 25%,rgba(0,31,91,.94) 100%);opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;pointer-events:none;}
+.team-photo:hover .team-ov,.team-photo:focus-visible .team-ov{opacity:1;transform:none;}
+.team-ov-n{font-size:17px;font-weight:800;line-height:1.25;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.4);}
+.team-ov-r{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#ffb3bf;margin-bottom:6px;}
+.team-ov-q{font-size:13px;line-height:1.4;opacity:.92;}
+@media(hover:none){.team-ov{display:none;}}
+.team-photo img{width:100%;height:100%;display:block;object-fit:cover;object-position:50% 12%;}
 .team-info{padding:22px 16px 26px;text-align:center;}
 .team-name{font-size:19px;font-weight:700;color:#555;margin-bottom:6px;}
 .team-role{font-size:14.5px;color:#777;}
-@media(max-width:1024px){.team-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:680px){.team-sec{padding:60px 20px;}.team-grid{grid-template-columns:1fr;gap:20px;}}
+@media(max-width:1024px){.team-card{flex-basis:calc((100% - 60px) / 3);}}
+@media(max-width:680px){.team-sec{padding:60px 20px;}.team-grid{gap:20px;}.team-card{flex-basis:100%;}}
 
 /* ─── SMALL-PHONE SIDEWAYS SCROLL FIX ─── */
 .ct-grid>*{min-width:0;}
