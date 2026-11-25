@@ -198,8 +198,8 @@ nav{position:fixed;top:38px;left:0;right:0;height:78px;background:#fff;z-index:5
 .global-label{font-size:13px;color:var(--accent);font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px;}
 .global-map{background:var(--bg-2);border-radius:24px;padding:48px;border:1px solid var(--border);}
 .global-map-img{width:100%;height:auto;display:block;}
-.country-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:24px;}
-.country{padding:10px 14px;background:#fff;border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:600;color:var(--primary);display:inline-flex;align-items:center;gap:8px;transition:all .25s;}
+.country-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:24px;}
+.country{padding:10px 14px;background:#fff;border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:600;color:var(--primary);display:inline-flex;align-items:center;gap:8px;transition:all .25s;min-width:0;overflow-wrap:anywhere;}
 .country:hover{background:var(--primary);color:#fff;border-color:var(--primary);}
 .country::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);}
 
@@ -599,7 +599,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .team-sec{padding:100px 40px;background:#fff;}
 .team-inner{max-width:1400px;margin:0 auto;}
 .team-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;}
-.team-card{flex:0 0 calc((100% - 120px) / 5);min-width:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 14px rgba(0,31,91,.12);}
+.team-card{flex:0 0 calc((100% - 90px) / 4);min-width:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 14px rgba(0,31,91,.12);}
 .team-photo{position:relative;overflow:hidden;background:#c9d0e2;aspect-ratio:1/1.05;display:flex;align-items:flex-end;outline-offset:-3px;}
 .team-ov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:20px 18px;color:#fff;background:linear-gradient(180deg,rgba(0,31,91,.1) 25%,rgba(0,31,91,.94) 100%);opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;pointer-events:none;}
 .team-photo:hover .team-ov,.team-photo:focus-visible .team-ov{opacity:1;transform:none;}
@@ -611,7 +611,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .team-info{padding:22px 16px 26px;text-align:center;}
 .team-name{font-size:19px;font-weight:700;color:#555;margin-bottom:6px;}
 .team-role{font-size:14.5px;color:#777;}
-@media(max-width:1024px){.team-card{flex-basis:calc((100% - 60px) / 3);}}
+@media(max-width:1024px){.team-card{flex-basis:calc((100% - 30px) / 2);}}
 @media(max-width:680px){.team-sec{padding:60px 20px;}.team-grid{gap:20px;}.team-card{flex-basis:100%;}}
 
 /* ─── SMALL-PHONE SIDEWAYS SCROLL FIX ─── */

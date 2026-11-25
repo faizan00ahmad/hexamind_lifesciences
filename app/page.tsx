@@ -174,8 +174,7 @@ export default function Home() {
               ["Imran Shah Hashmi", "Founder & CEO", "Chartered Certified Accountant (ACCA)", 0],
               ["Dr. Nadeem Aslam Bhatti", "Director Marketing", "MPhil in Veterinary Sciences", 1],
               ["Mr. Hassan Raza Shah", "Director Sales", "LLB", 2],
-              ["Mr. Muhammad Javed Hashmi", "Director", "", 0],
-              ["Mr. Muhammad Khalid Hashmi", "Director", "", 1],
+              ["Mr. Muhammad Khalid Hashmi", "Director", "", 0],
             ].map(([n, r, q, d], i) => (
               <Reveal key={i} className="team-card" delay={d as 0 | 1 | 2}>
                 <div className="team-photo" tabIndex={0} aria-label={`${n}, ${r}${q ? ", " + q : ""}`}>
