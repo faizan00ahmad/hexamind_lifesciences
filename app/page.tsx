@@ -171,10 +171,12 @@ export default function Home() {
           </div>
           <div className="team-grid">
             {[
-              ["Imran Shah Hashmi", "Founder & CEO", "Chartered Certified Accountant (ACCA)", 0],
-              ["Dr. Nadeem Aslam Bhatti", "Director Marketing", "MPhil in Veterinary Sciences", 1],
-              ["Mr. Hassan Raza Shah", "Director Sales", "LLB", 2],
-              ["Mr. Muhammad Khalid Hashmi", "Director", "", 0],
+              ["Muhammad Tariq Sharif", "CEO", "", 0],
+              ["Imran Shah Hashmi", "Director International Trade", "Chartered Certified Accountant (ACCA)", 1],
+              ["Dr. Nadeem Aslam Bhatti", "Director Marketing", "MPhil in Veterinary Sciences", 2],
+              ["Hassan Raza Shah", "Director Sales", "LLB", 0],
+              ["Muhammad Khalid Hashmi", "Director", "", 1],
+              ["Muhammad Javed Hashmi", "Director Sales", "", 2],
             ].map(([n, r, q, d], i) => (
               <Reveal key={i} className="team-card" delay={d as 0 | 1 | 2}>
                 <div className="team-photo" tabIndex={0} aria-label={`${n}, ${r}${q ? ", " + q : ""}`}>

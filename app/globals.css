@@ -598,8 +598,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 /* ─── MEET OUR TEAM ─── */
 .team-sec{padding:100px 40px;background:#fff;}
 .team-inner{max-width:1400px;margin:0 auto;}
-.team-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;}
-.team-card{flex:0 0 calc((100% - 90px) / 4);min-width:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 14px rgba(0,31,91,.12);}
+.team-grid{max-width:1100px;margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;justify-content:center;gap:30px;}
+.team-card{flex:0 0 calc((100% - 60px) / 3);min-width:0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 14px rgba(0,31,91,.12);}
 .team-photo{position:relative;overflow:hidden;background:#c9d0e2;aspect-ratio:1/1.05;display:flex;align-items:flex-end;outline-offset:-3px;}
 .team-ov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:20px 18px;color:#fff;background:linear-gradient(180deg,rgba(0,31,91,.1) 25%,rgba(0,31,91,.94) 100%);opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;pointer-events:none;}
 .team-photo:hover .team-ov,.team-photo:focus-visible .team-ov{opacity:1;transform:none;}
