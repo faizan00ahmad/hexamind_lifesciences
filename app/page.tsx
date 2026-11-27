@@ -176,7 +176,7 @@ export default function Home() {
               ["Dr. Nadeem Aslam Bhatti", "Director Marketing", "MPhil in Veterinary Sciences", 2],
               ["Hassan Raza Shah", "Director Sales", "LLB", 0],
               ["Muhammad Khalid Hashmi", "Director", "", 1],
-              ["Muhammad Javed Hashmi", "Director Sales", "", 2],
+              ["Muhammad Javed Hashmi", "Director", "", 2],
             ].map(([n, r, q, d], i) => (
               <Reveal key={i} className="team-card" delay={d as 0 | 1 | 2}>
                 <div className="team-photo" tabIndex={0} aria-label={`${n}, ${r}${q ? ", " + q : ""}`}>
